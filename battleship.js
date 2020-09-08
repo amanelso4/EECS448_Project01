@@ -18,6 +18,19 @@ function click(row, col)
     checkForWinner(row,ship);
 }
 
+function switchPlayer() {
+    /*  
+    calls drawBoard
+    sets player variable to one or two
+    */
+}
+
+function drawBoard(newBoard) {
+    /*  
+    switch what board is being displayed based on parameter
+    */
+}
+
 var row = '';
 var col = '';
 function checkForShip(row, col)
