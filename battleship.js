@@ -14,7 +14,6 @@ var numShips = 0;
 
 function click(row, col) 
 {
-    console.log("HI");
     checkForShip(row,col);
     checkForWinner(row,ship);
 }
