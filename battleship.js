@@ -10,43 +10,46 @@ var numShips = 0;
     @ = Ship
 */
 
-/** Class representing a point. 
- * 
- * Taken from https://jsdoc.app/howto-es2015-classes.html as an example
- * 
-*/
-class Point {
-    /**
-     * Create a point.
-     * @param {number} x - The x value.
-     * @param {number} y - The y value.
-     */
-    constructor(x, y) {
-        // ...
-    }
+/**
+ * Perform gameplay actions on a given row, col pair.
+ * @param {number} row - The row to update.
+ * @param {number} col - The col to update.
+ */
+function click(row, col) 
+{
+    checkForShip(row,col);
+    checkForWinner(row,ship);
+}
 
-    /**
-     * Get the x value.
-     * @return {number} The x value.
-     */
-    getX() {
-        // ...
+var row = '';
+var col = '';
+/**
+ * Check if a ship is located at a given row, col pair.
+ * @param {number} row - The row to check.
+ * @param {number} col - The col to check.
+ */
+function checkForShip(row, col)
+{
+    if(player == 1) {
+       if(board2[row-1][col-1] == '*') {
+           board2[row-1][col-1] = 'M';
+           document.querySelector("#result").innerText = " MISS "
+       }
+       else {
+           board2[row-1][col-1] = 'H'
+           document.querySelector("#result").innerText = " HIT "
+       }
+       player = 2;
     }
-
-    /**
-     * Get the y value.
-     * @return {number} The y value.
-     */
-    getY() {
-        // ...
-    }
-
-    /**
-     * Convert a string containing two comma-separated numbers into a point.
-     * @param {string} str - The string containing two comma-separated numbers.
-     * @return {Point} A Point object.
-     */
-    static fromString(str) {
-        // ...
+    else {
+        if(board2[row-1][col-1] == '*') {
+            board2[row-1][col-1] = 'M';
+            document.querySelector("#result").innerText = " MISS "
+        }
+        else {
+            board2[row-1][col-1] = 'H'
+            document.querySelector("#result").innerText = " HIT "
+        }
+        player = 1;
     }
 }
