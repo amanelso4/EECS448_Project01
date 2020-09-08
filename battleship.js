@@ -12,9 +12,15 @@ var numShips = 0;
     @ = Ship
 */
 
+function click(row, col) 
+{
+    console.log("HI");
+    checkForShip(row,col);
+    checkForWinner(row,ship);
+}
 
 var row = '';
-var col = ''
+var col = '';
 function checkForShip(row, col)
 {
     if(player == 1) {
