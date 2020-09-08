@@ -4,14 +4,15 @@ var board1 = [[]];
 var board2 = [[]];
 var numShips = 0;
 
-/* * = empty
-    M = Miss
-    H = Hit
-    @ = Ship
-*/
 
 /**
  * Perform gameplay actions on a given row, col pair.
+ * 
+ * * = empty
+ *  M = Miss
+ *  H = Hit
+ *  @ = Ship
+ * 
  * @param {number} row - The row to update.
  * @param {number} col - The col to update.
  */
@@ -21,8 +22,6 @@ function click(row, col)
     checkForWinner(row,ship);
 }
 
-var row = '';
-var col = '';
 /**
  * Check if a ship is located at a given row, col pair.
  * @param {number} row - The row to check.
