@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Home</title>
+  <title> battleship.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -73,33 +75,58 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p></p>
-                    <h1>Home</h1>
+                    <p>Source</p>
+                    <h1>battleship.js</h1>
                 </header>
                 
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/** Class representing a point. 
+ * 
+ * Taken from https://jsdoc.app/howto-es2015-classes.html as an example
+ * 
+*/
+class Point {
+    /**
+     * Create a point.
+     * @param {number} x - The x value.
+     * @param {number} y - The y value.
+     */
+    constructor(x, y) {
+        // ...
+    }
 
+    /**
+     * Get the x value.
+     * @return {number} The x value.
+     */
+    getX() {
+        // ...
+    }
 
-    <h3> </h3>
+    /**
+     * Get the y value.
+     * @return {number} The y value.
+     */
+    getY() {
+        // ...
+    }
 
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+    /**
+     * Convert a string containing two comma-separated numbers into a point.
+     * @param {string} str - The string containing two comma-separated numbers.
+     * @return {Point} A Point object.
+     */
+    static fromString(str) {
+        // ...
+    }
+}</code></pre>
+        </article>
+    </section>
 
 
 
