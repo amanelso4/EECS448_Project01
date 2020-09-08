@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<canvas id="canvas" width="500px" height="500px"></canvas>
+<script>
+
+    var canvas = document.getElementById("canvas");
+    c = canvas.getContext("2d");
+    boxSize = 50;
+    numBoxes = 9;
+    canvas.addEventListener('click', handleClick);
+
+    function drawGrid()
+    {
+        c.beginPath();
+        c.fillStyle = "white";
+        c.lineWidth = 3;
+        c.strokeStyle = "black";
+        for(var row = 0; row < numBoxes; row++){
+            for(var column = 0; column < numBoxes; column++){
+                var x = column * boxSize + 100;
+                var y = row * boxSize + 100; 
+                c.rect(x,y,boxSize,boxSize);
+                c.fill();
+                c.stroke();
+            }
+        }
+        c.closePath();
+    }
+
+    function handleClick(e) 
+    {
+        c.fillStyle = "red";
+        c.fillRect(Math.floor(e.offsetX / boxSize) * boxSize, Math.floor(e.offsetY / boxSize) * boxSize, boxSize, boxSize);
+    }
+
+    drawGrid();
+
+</script>
+</html>
