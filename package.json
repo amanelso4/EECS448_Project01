@@ -1,0 +1,5 @@
+{
+    "script": {
+        "docs": "jsdoc -c jsdoc.json"
+    }
+}
