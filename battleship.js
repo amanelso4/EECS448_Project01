@@ -42,18 +42,44 @@ function hi() {
 function switchPlayer() {
     if(player = 1) {
         player = 2;
-        drawBoard(board2);
+        drawGuessBoard(board1);
+        drawPlayerBoard(board2);
     }
     else {
         player = 1;
-        drawBoard(board1);
+        drawGuessBoard(board2);
+        drawPlayerBoard(board1);
     }
 }
 
-function drawBoard(newBoard) {
-    /*  
-    switch what board is being displayed based on parameter
-    */
+function drawGuessBoard(newBoard) {
+    num = 1;
+    let coord = document.getElementById("guessBoard"+num);
+    for(var i = 0; i<9; i++){
+        for(var j = 0; j<9; j++) {
+            if(newBoard[i][j] != '@')
+            {
+                coord = newBoard[i][j]
+            }
+            else {
+                coord = '*';
+            }
+            num ++;
+            coord = document.getElementById("guessBoard" + num);
+        }
+    }
+}
+
+function drawPlayerBoard(newBoard) {
+    num = 1;
+    let coord = document.getElementById("playerBoard"+num);
+    for(var i = 0; i<9; i++){
+        for(var j = 0; j<9; j++) {
+            coord = newBoard[i][j]
+            num ++;
+            coord = document.getElementById("playerBoard" + num);
+        }
+    }
 }
 
 var row = '';
