@@ -1,0 +1,66 @@
+
+h1{
+    text-align: center;
+    color: white;
+    background-color:navy;
+    padding: 10px;
+    letter-spacing: 3px;
+}
+
+h2 {
+    text-align: center;
+}
+
+.shipButtons {
+    text-align: center;
+}
+
+#ships {
+    text-align: center;
+}
+
+
+#letterLabels {
+    margin-left: 115px;
+    letter-spacing: 18px;
+    font-style: oblique;
+    font-weight: bold;
+}
+
+#numLabels {
+    font-style: oblique;
+    font-weight: bold;
+}
+
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(10, 50px);
+    margin-left: 50px;
+  }
+
+.numLabels{
+    font-style: oblique;
+    font-weight: bold;
+    line-height: 3.5em;
+    text-align: center;
+}
+
+.column {
+    display: table-row;
+}
+
+.cell {
+border: 3px solid rgb(100, 100, 100);
+height: 50px;
+width: 50px;
+background-color: lightblue;
+}
+
+
+#placedShips {
+    margin-top: 20px;
+    align-content: center;
+    margin-left: 275px;
+}
+
