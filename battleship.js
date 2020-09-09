@@ -44,7 +44,6 @@ function checkForShip(row, col)
            board2[row-1][col-1] = 'H'
            document.querySelector("#result").innerText = " HIT "
        }
-       player = 2;
     }
     else {
         if(board2[row-1][col-1] == '*') {
@@ -55,9 +54,9 @@ function checkForShip(row, col)
             board2[row-1][col-1] = 'H'
             document.querySelector("#result").innerText = " HIT "
         }
-        player = 1;
     }
 }
+
 
 
 
