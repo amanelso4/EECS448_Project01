@@ -12,59 +12,58 @@ var numShips = 0;
 function placeShips(){
 
 }
-//x: x position
-//y: y position
+
 //length: length of the ship
 //horizontal: true if the boat is being placed horizontally
-function placeShip(x,y,board,length,horizontal){
-  if(checkPlacement(x,y,board,length,horizontal)){
+function placeShip(row,col,board,length,horizontal){
+  if(checkPlacement(row,col,board,length,horizontal)){
     for(i = 0; i < length; i++){
       if(board == 1){
         if(horizontal){
-          board1[x][y+i]=length;
+          board1[row][col+i]=length;
         }else{
-          board1[x+i][y]=length;
+          board1[row+i][col]=length;
         }
       }
       else{
         if(horizontal){
-          board2[x][y+i]=length;
+          board2[row][col+i]=length;
         }else{
-          board2[x+i][y]=length;
+          board2[row+i][col]=length;
         }
       }
     }
   }
 }
-function checkPlacement(x,y,board,length,horizontal){
+function checkPlacement(row,col,board,length,horizontal){
   let valid = true;
   if(horizontal){
-    if(9 < (x+length)){
+    if(9 < (col+length)){
       valid = false;
     }
     else{
       for(i = 0; i < length; i++){
-        if(board == 1 && board1[x+i][y]!="*"){
+        if(board == 1 && board1[row+i][col]!="*"){
           valid = false;
           break;
         }
-        if(board == 2 && board2[x+i][y]!="*"){
+        if(board == 2 && board2[row+i][col]!="*"){
           valid = false;
           break;
         }
       }
     }
   }else{
-    if(9 > (y+length)){
+    if(9 > (row+length)){
       valid = false;
     }
     else{
       for(i = 0; i < length; i++){
-        if(board == 1 && board1[x+i][y]!="*"){
+        if(board == 1 && board1[row+i][col]!="*"){
           valid = false;
           break;
         }
-        if(board == 2 && board2[x+i][y]!="*"){
+        if(board == 2 && board2[row+i][col]!="*"){
           valid = false;
           break;
         }
