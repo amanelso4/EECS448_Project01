@@ -16,13 +16,19 @@ function placeShips(){
 //y: y position
 //length: length of the ship
 //horizontal: true if the boat is being placed horizontally
-/*
 function placeShip(x,y,board,length,horizontal){
   if(checkPlacement(x,y,board,length,horizontal)){
     if(horizontal){
-      for(i = 0; i < length; i++){
+      for(i = 0; i < length; i++){ 
+      }
+    }else{
 
-      */  
+    }
+  }
+}
+
+      
+
 function click(row, col) 
 {
     checkForShip(row,col);
@@ -30,10 +36,14 @@ function click(row, col)
 }
 
 function switchPlayer() {
-    /*  
-    calls drawBoard
-    sets player variable to one or two
-    */
+    if(player = 1) {
+        player = 2;
+        drawBoard(board2);
+    }
+    else {
+        player = 1;
+        drawBoard(board1);
+    }
 }
 
 function drawBoard(newBoard) {
@@ -68,14 +78,6 @@ function checkForShip(row, col)
     }
 }
 
-
-
-      }
-    }else{
-
-    }
-  }
-}
 function checkPlacement(x,y,board,length,horizontal){
   let valid = true;
   if(horizontal){
