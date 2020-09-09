@@ -57,10 +57,23 @@ width: 50px;
 background-color: lightblue;
 }
 
-
 #placedShips {
-    margin-top: 20px;
+    border: 2px solid red;
+    color: black;
+    background-color: white;
+    font-size: 15px;
+    text-align: center;
+    padding: 15px 30px;
+    margin-top: 10px;
     align-content: center;
-    margin-left: 275px;
+    margin-left: 250px;
+}
+
+#placedShips:hover {
+    background-color: red; 
+    border: none;
+    color: white;
+    padding: 17px 32px;
+    cursor: pointer;
 }
 
