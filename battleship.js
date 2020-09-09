@@ -35,6 +35,10 @@ function click(row, col)
     checkForWinner(row,ship);
 }
 
+function hi() {
+    console.log("HI");
+}
+
 function switchPlayer() {
     if(player = 1) {
         player = 2;
@@ -56,6 +60,7 @@ var row = '';
 var col = '';
 function checkForShip(row, col)
 {
+    console.log("HI i am checking for ship");
     if(player == 1) {
        if(board2[row-1][col-1] == '*') {
            board2[row-1][col-1] = 'M';
@@ -118,6 +123,7 @@ function checkPlacement(x,y,board,length,horizontal){
 function createBoards(){
 //This will also work, but I think might be less readable
 //  let board1 = Array(9).fill().map(() => Array(9).fill("*"));
+console.log("HI I am filling boards");
   for(i = 0; i < 9; i++){
     board1[i]=[];
     board2[i]=[];
@@ -126,4 +132,5 @@ function createBoards(){
       board2[i][j]="*";
     }
   }
+  board2[0][0] = '@';
 }
