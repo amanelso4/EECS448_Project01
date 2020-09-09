@@ -18,19 +18,28 @@ function placeShips(){
 //horizontal: true if the boat is being placed horizontally
 function placeShip(x,y,board,length,horizontal){
   if(checkPlacement(x,y,board,length,horizontal)){
-    if(horizontal){
-      for(i = 0; i < length; i++){
-
+    for(i = 0; i < length; i++){
+      if(board == 1){
+        if(horizontal){
+          board1[x][y+i]=length;
+        }else{
+          board1[x+i][y]=length;
+        }
       }
-    }else{
-
+      else{
+        if(horizontal){
+          board2[x][y+i]=length;
+        }else{
+          board2[x+i][y]=length;
+        }
+      }
     }
   }
 }
 function checkPlacement(x,y,board,length,horizontal){
   let valid = true;
   if(horizontal){
-    if(9 > (x+length)){
+    if(9 < (x+length)){
       valid = false;
     }
     else{
@@ -65,8 +74,6 @@ function checkPlacement(x,y,board,length,horizontal){
   return valid;
 }
 function createBoards(){
-//This will also work, but I think might be less readable
-//  let board1 = Array(9).fill().map(() => Array(9).fill("*"));
   for(i = 0; i < 9; i++){
     board1[i]=[];
     board2[i]=[];
