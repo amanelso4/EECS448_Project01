@@ -16,10 +16,59 @@ function placeShips(){
 //y: y position
 //length: length of the ship
 //horizontal: true if the boat is being placed horizontally
+/*
 function placeShip(x,y,board,length,horizontal){
   if(checkPlacement(x,y,board,length,horizontal)){
     if(horizontal){
       for(i = 0; i < length; i++){
+
+      */  
+function click(row, col) 
+{
+    checkForShip(row,col);
+    checkForWinner(row,ship);
+}
+
+function switchPlayer() {
+    /*  
+    calls drawBoard
+    sets player variable to one or two
+    */
+}
+
+function drawBoard(newBoard) {
+    /*  
+    switch what board is being displayed based on parameter
+    */
+}
+
+var row = '';
+var col = '';
+function checkForShip(row, col)
+{
+    if(player == 1) {
+       if(board2[row-1][col-1] == '*') {
+           board2[row-1][col-1] = 'M';
+           document.querySelector("#result").innerText = " MISS "
+       }
+       else {
+           board2[row-1][col-1] = 'H'
+           document.querySelector("#result").innerText = " HIT "
+       }
+    }
+    else {
+        if(board2[row-1][col-1] == '*') {
+            board2[row-1][col-1] = 'M';
+            document.querySelector("#result").innerText = " MISS "
+        }
+        else {
+            board2[row-1][col-1] = 'H'
+            document.querySelector("#result").innerText = " HIT "
+        }
+    }
+}
+
+
 
       }
     }else{
