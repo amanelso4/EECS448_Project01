@@ -57,40 +57,25 @@ function checkForWinner()
         numH++;
       }
     }
-    if(numShips==1)
+    if(numShips==1 && numH==1)
     {
-      if(numH==1)
-      {
         won = true;
-      }
     }
-    if(numShips==2)
+    if(numShips==2 && numH==3)
     {
-      if(numH==3)
-      {
         won = true;
-      }
     }
-    if(numShips==3)
+    if(numShips==3 && numH==6)
     {
-      if(numH==6)
-      {
         won = true;
-      }
     }
-    if(numShips==4)
+    if(numShips==4 && numH==10)
     {
-      if(numH==10)
-      {
         won = true;
-      }
     }
-    if(numShips==5)
+    if(numShips==5 && numH==15)
     {
-      if(numH==15)
-      {
         won = true;
-      }
     }
   return won;
 }
