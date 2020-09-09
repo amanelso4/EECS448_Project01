@@ -3,18 +3,57 @@
     <head>
         <link rel="stylesheet" type="text/css" href="style.css"/>
     </head>
+    <script>
+
+        function numShipFunction(num){
+            if(num === 1){
+                document.getElementById('ships').innerHTML = 'You have 1 ship to place. Click "Place Ships" button when finished.';
+            }
+            else{
+                document.getElementById('ships').innerHTML = 'You have ' + num + ' ships to place. Click "Place Ships" button when finished.';
+            }
+            
+            for(var i = 1; i < 6; i++){
+                document.getElementById(i + "Ship").remove();
+            }
+        };
+
+    </script>
+
     <h1>Battleship</h1>
-    <p id = "numShips">How many ships do you want?</p>
+
+    <h2 id = "numShips">How many ships do you want?</h2>
     <div class = "shipButtons">
-        <button onclick = "numShipFunction(1)" id="oneShip">1</button>
-        <button onclick = "numShipFunction(2)" id="twoShip">2</button>
-        <button onclick = "numShipFunction(3)" id="twoShip">3</button>
-        <button onclick = "numShipFunction(4)" id="twoShip">4</button>
-        <button onclick = "numShipFunction(5)" id="twoShip">5</button>
+        <button onclick = "numShipFunction(1)" id="1Ship">1</button>
+        <button onclick = "numShipFunction(2)" id="2Ship">2</button>
+        <button onclick = "numShipFunction(3)" id="3Ship">3</button>
+        <button onclick = "numShipFunction(4)" id="4Ship">4</button>
+        <button onclick = "numShipFunction(5)" id="5Ship">5</button>
     </div>
+
     <p id = "ships"> </p>
     
+    <h2 id= "playersTurn"> </h2> <!-- This is where you place Player 1 or Player 2 whenever we swtich turns -->
+    
+    <br>
+
+    <div>
+        <p id = "letterLabels">A B C D E F G H I</p>
+    </div>
+
+    
     <div class="grid-container">
+        <div class = "numLabels">
+           <div>1</div>
+           <div>2</div>
+           <div>3</div>
+           <div>4</div>
+           <div>5</div>
+           <div>6</div>
+           <div>7</div>
+           <div>8</div>
+           <div>9</div>
+        </div>
         <div class="column">
             <div class="cell" id="cell00"></div>
             <div class="cell" id="cell10"></div>
@@ -115,5 +154,7 @@
         <div class="cell" id="cell88"></div>
     </div>
       </div>
+
+      <button id = "placedShips" >Place Ships</button>
     
 </html>
