@@ -53,7 +53,7 @@ function checkForWinner()
     {
       for(int j=0; j<9; j++)
       {
-        if(board[i][j]=='H')
+        if(board1[i][j]=='H') //will need to be updated to work for either board
         numH++;
       }
     }
