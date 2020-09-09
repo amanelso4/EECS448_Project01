@@ -81,4 +81,86 @@ function createBoards(){
       board2[i][j]="*";
     }
   }
+function click(row, col)
+{
+    checkForShip(row,col);
+    checkForWinner(row,ship);
+}
+
+var row = '';
+var col = '';
+function checkForShip(row, col)
+{
+    if(player == 1) {
+       if(board2[row-1][col-1] == '*') {
+           board2[row-1][col-1] = 'M';
+           document.querySelector("#result").innerText = " MISS "
+       }
+       else {
+           board2[row-1][col-1] = 'H'
+           document.querySelector("#result").innerText = " HIT "
+       }
+       player = 2;
+    }
+    else {
+        if(board2[row-1][col-1] == '*') {
+            board2[row-1][col-1] = 'M';
+            document.querySelector("#result").innerText = " MISS "
+        }
+        else {
+            board2[row-1][col-1] = 'H'
+            document.querySelector("#result").innerText = " HIT "
+        }
+        player = 1;
+    }
+}
+
+function checkForWinner()
+{
+  var won = false;
+  var numH = 0;
+    for(int i=0; i<9; i++)
+    {
+      for(int j=0; j<9; j++)
+      {
+        if(board[i][j]=='H')
+        numH++;
+      }
+    }
+    if(numShips==1)
+    {
+      if(numH==1)
+      {
+        won = true;
+      }
+    }
+    if(numShips==2)
+    {
+      if(numH==3)
+      {
+        won = true;
+      }
+    }
+    if(numShips==3)
+    {
+      if(numH==6)
+      {
+        won = true;
+      }
+    }
+    if(numShips==4)
+    {
+      if(numH==10)
+      {
+        won = true;
+      }
+    }
+    if(numShips==5)
+    {
+      if(numH==15)
+      {
+        won = true;
+      }
+    }
+  return won;
 }
