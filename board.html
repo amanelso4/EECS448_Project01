@@ -1,39 +1,160 @@
 <!DOCTYPE html>
 <html>
-<canvas id="canvas" width="500px" height="500px"></canvas>
-<script>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+    </head>
+    <script>
 
-    var canvas = document.getElementById("canvas");
-    c = canvas.getContext("2d");
-    boxSize = 50;
-    numBoxes = 9;
-    canvas.addEventListener('click', handleClick);
-
-    function drawGrid()
-    {
-        c.beginPath();
-        c.fillStyle = "white";
-        c.lineWidth = 3;
-        c.strokeStyle = "black";
-        for(var row = 0; row < numBoxes; row++){
-            for(var column = 0; column < numBoxes; column++){
-                var x = column * boxSize + 100;
-                var y = row * boxSize + 100; 
-                c.rect(x,y,boxSize,boxSize);
-                c.fill();
-                c.stroke();
+        function numShipFunction(num){
+            if(num === 1){
+                document.getElementById('ships').innerHTML = 'You have 1 ship to place. Click "Place Ships" button when finished.';
             }
-        }
-        c.closePath();
-    }
+            else{
+                document.getElementById('ships').innerHTML = 'You have ' + num + ' ships to place. Click "Place Ships" button when finished.';
+            }
+            
+            for(var i = 1; i < 6; i++){
+                document.getElementById(i + "Ship").remove();
+            }
+        };
 
-    function handleClick(e) 
-    {
-        c.fillStyle = "red";
-        c.fillRect(Math.floor(e.offsetX / boxSize) * boxSize, Math.floor(e.offsetY / boxSize) * boxSize, boxSize, boxSize);
-    }
+    </script>
 
-    drawGrid();
+    <h1>Battleship</h1>
 
-</script>
+    <h2 id = "numShips">How many ships do you want?</h2>
+    <div class = "shipButtons">
+        <button onclick = "numShipFunction(1)" id="1Ship">1</button>
+        <button onclick = "numShipFunction(2)" id="2Ship">2</button>
+        <button onclick = "numShipFunction(3)" id="3Ship">3</button>
+        <button onclick = "numShipFunction(4)" id="4Ship">4</button>
+        <button onclick = "numShipFunction(5)" id="5Ship">5</button>
+    </div>
+
+    <p id = "ships"> </p>
+    
+    <h2 id= "playersTurn"> </h2> <!-- This is where you place Player 1 or Player 2 whenever we swtich turns -->
+    
+    <br>
+
+    <div>
+        <p id = "letterLabels">A B C D E F G H I</p>
+    </div>
+
+    
+    <div class="grid-container">
+        <div class = "numLabels">
+           <div>1</div>
+           <div>2</div>
+           <div>3</div>
+           <div>4</div>
+           <div>5</div>
+           <div>6</div>
+           <div>7</div>
+           <div>8</div>
+           <div>9</div>
+        </div>
+        <div class="column">
+            <div class="cell" id="cell00"></div>
+            <div class="cell" id="cell10"></div>
+            <div class="cell" id="cell20"></div>
+            <div class="cell" id="cell30"></div>
+            <div class="cell" id="cell40"></div>
+            <div class="cell" id="cell50"></div>
+            <div class="cell" id="cell60"></div>
+            <div class="cell" id="cell70"></div>
+            <div class="cell" id="cell80"></div>
+        </div>
+        <div class="column">
+          <div class="cell" id="cell01"></div>
+          <div class="cell" id="cell11"></div>
+          <div class="cell" id="cell21"></div>
+          <div class="cell" id="cell31"></div>
+          <div class="cell" id="cell41"></div>
+          <div class="cell" id="cell51"></div>
+          <div class="cell" id="cell61"></div>
+          <div class="cell" id="cell71"></div>
+          <div class="cell" id="cell81"></div>
+      </div>
+      <div class="column">
+          <div class="cell" id="cell02"></div>
+          <div class="cell" id="cell12"></div>
+          <div class="cell" id="cell22"></div>
+          <div class="cell" id="cell32"></div>
+          <div class="cell" id="cell42"></div>
+          <div class="cell" id="cell52"></div>
+          <div class="cell" id="cell62"></div>
+          <div class="cell" id="cell72"></div>
+          <div class="cell" id="cell82"></div>
+      </div>
+      <div class="column">
+          <div class="cell" id="cell03"></div>
+          <div class="cell" id="cell13"></div>
+          <div class="cell" id="cell23"></div>
+          <div class="cell" id="cell33"></div>
+          <div class="cell" id="cell43"></div>
+          <div class="cell" id="cell53"></div>
+          <div class="cell" id="cell63"></div>
+          <div class="cell" id="cell73"></div>
+          <div class="cell" id="cell83"></div>
+      </div>
+      <div class="column">
+          <div class="cell" id="cell04"></div>
+          <div class="cell" id="cell14"></div>
+          <div class="cell" id="cell24"></div>
+          <div class="cell" id="cell34"></div>
+          <div class="cell" id="cell44"></div>
+          <div class="cell" id="cell54"></div>
+          <div class="cell" id="cell64"></div>
+          <div class="cell" id="cell74"></div>
+          <div class="cell" id="cell84"></div>
+      </div>
+      <div class="column">
+          <div class="cell" id="cell05"></div>
+          <div class="cell" id="cell15"></div>
+          <div class="cell" id="cell25"></div>
+          <div class="cell" id="cell35"></div>
+          <div class="cell" id="cell45"></div>
+          <div class="cell" id="cell55"></div>
+          <div class="cell" id="cell65"></div>
+          <div class="cell" id="cell75"></div>
+          <div class="cell" id="cell85"></div>
+      </div>
+      <div class="column">
+          <div class="cell" id="cell06"></div>
+          <div class="cell" id="cell16"></div>
+          <div class="cell" id="cell26"></div>
+          <div class="cell" id="cell36"></div>
+          <div class="cell" id="cell46"></div>
+          <div class="cell" id="cell56"></div>
+          <div class="cell" id="cell66"></div>
+          <div class="cell" id="cell76"></div>
+          <div class="cell" id="cell86"></div>
+      </div>
+      <div class="column">
+        <div class="cell" id="cell07"></div>
+        <div class="cell" id="cell17"></div>
+        <div class="cell" id="cell27"></div>
+        <div class="cell" id="cell37"></div>
+        <div class="cell" id="cell47"></div>
+        <div class="cell" id="cell57"></div>
+        <div class="cell" id="cell67"></div>
+        <div class="cell" id="cell77"></div>
+        <div class="cell" id="cell87"></div>
+    </div>
+    <div class="column">
+        <div class="cell" id="cell08"></div>
+        <div class="cell" id="cell18"></div>
+        <div class="cell" id="cell28"></div>
+        <div class="cell" id="cell38"></div>
+        <div class="cell" id="cell48"></div>
+        <div class="cell" id="cell58"></div>
+        <div class="cell" id="cell68"></div>
+        <div class="cell" id="cell78"></div>
+        <div class="cell" id="cell88"></div>
+    </div>
+      </div>
+      <br>
+      <button id = "placedShips" >Place Ships</button>
+    
 </html>
