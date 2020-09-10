@@ -9,9 +9,84 @@ var numShips = 0;
     H = Hit
     @ = Ship
 */
+<<<<<<< HEAD
+=======
 
-function checkPlacement(x,y,board,length,horizontal){
+function click(row, col)
+{
+    checkForShip(row,col);
+    checkForWinner(row,ship);
 }
+
+function switchPlayer() {
+    if(player = 1) {
+        player = 2;
+        drawGuessBoard(board1);
+        drawPlayerBoard(board2);
+    }
+    else {
+        player = 1;
+        drawGuessBoard(board2);
+        drawPlayerBoard(board1);
+    }
+}
+
+function drawGuessBoard(newBoard) {
+    num = 1;
+    let coord = document.getElementById("guessBoard"+num);
+    for(var i = 0; i<9; i++){
+        for(var j = 0; j<9; j++) {
+            if(newBoard[i][j] != '@')
+            {
+                coord = newBoard[i][j]
+            }
+            else {
+                coord = '*';
+            }
+            num ++;
+            coord = document.getElementById("guessBoard" + num);
+        }
+    }
+}
+
+function drawPlayerBoard(newBoard) {
+    num = 1;
+    let coord = document.getElementById("playerBoard"+num);
+    for(var i = 0; i<9; i++){
+        for(var j = 0; j<9; j++) {
+            coord = newBoard[i][j]
+            num ++;
+            coord = document.getElementById("playerBoard" + num);
+        }
+    }
+}
+
+var row = '';
+var col = '';
+function checkForShip(row, col)
+{
+    console.log("HI i am checking for ship");    if(player == 1) {
+       if(board2[row-1][col-1] == '*') {
+           board2[row-1][col-1] = 'M';
+           document.querySelector("#result").innerText = " MISS "
+       }
+       else {
+           board2[row-1][col-1] = 'H'
+           document.querySelector("#result").innerText = " HIT "
+       }
+    }
+    else {
+        if(board2[row-1][col-1] == '*') {
+            board2[row-1][col-1] = 'M';
+            document.querySelector("#result").innerText = " MISS "
+        }
+        else {
+            board2[row-1][col-1] = 'H'
+            document.querySelector("#result").innerText = " HIT "
+        }
+    }
+}
+>>>>>>> 2b702dbb3b4de8b60280562ed5a29c22b4f2a635
 
 //length: length of the ship
 //horizontal: true if the boat is being placed horizontally
