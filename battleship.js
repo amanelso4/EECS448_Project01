@@ -105,17 +105,15 @@ function switchPlayer() {
 }
 
 function drawGuessBoard(newBoard) {
-    let coord = document.getElementById("cell"+1+1);
+    console.log("drawGuessBoard got called");
     for(var i = 0; i<9; i++){
         for(var j = 0; j<9; j++) {
             if(newBoard[i][j] != '@')
             {
-                coord = newBoard[i][j]
+                document.querySelector("cell"+(i+1)+(j+1)).innerText = newBoard [i][j];
             }
             else {
-                coord = '*';
-            }
-            coord = document.getElementById("guessBoard" + i + j);
+                document.querySelector("cell"+(i+1)+(j+1)).innerText = '*';            }
         }
     }
 }
