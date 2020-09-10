@@ -200,7 +200,7 @@ function checkForWinner()
     }
     if(won)
     {
-      document.querySelector("#ships").innerText = " Congrats! You won. Refresh to play again. "
+      document.getElementById('ships').innerText = " Congrats! You won. Refresh to play again. "
     }
   return won;
 }
