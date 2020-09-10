@@ -9,27 +9,8 @@ var numShips = 0;
     H = Hit
     @ = Ship
 */
-function placeShips(){
 
-}
-//x: x position
-//y: y position
-//length: length of the ship
-//horizontal: true if the boat is being placed horizontally
-function placeShip(x,y,board,length,horizontal){
-  if(checkPlacement(x,y,board,length,horizontal)){
-    if(horizontal){
-      for(i = 0; i < length; i++){ 
-      }
-    }else{
-
-    }
-  }
-}
-
-      
-
-function click(row, col) 
+function click(row, col)
 {
     checkForShip(row,col);
     checkForWinner(row,ship);
@@ -102,9 +83,6 @@ function checkForShip(row, col)
             document.querySelector("#result").innerText = " HIT "
         }
     }
-}
-
-function checkPlacement(x,y,board,length,horizontal){
 }
 
 //length: length of the ship
