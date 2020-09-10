@@ -134,21 +134,21 @@ function checkForShip(row, col)
     if(player == 1) {
        if(board2[row-1][col-1] == '*') {
            board2[row-1][col-1] = 'M';
-           document.querySelector("#result").innerText = " MISS "
+           document.getElementById('cell'+col+row).innerHTML = " MISS "
        }
        else {
            board2[row-1][col-1] = 'H'
-           document.querySelector("#result").innerText = " HIT "
+           document.getElementById('cell'+col+row).innerHTML = " HIT "
        }
     }
     else {
         if(board2[row-1][col-1] == '*') {
             board2[row-1][col-1] = 'M';
-            document.querySelector("#result").innerText = " MISS "
+            document.getElementById('cell'+col+row).innerHTML = " MISS "
         }
         else {
             board2[row-1][col-1] = 'H'
-            document.querySelector("#result").innerText = " HIT "
+            document.getElementById('cell'+col+row).innerHTML = " HIT "
         }
     }
 drawGuessBoard(board1);
