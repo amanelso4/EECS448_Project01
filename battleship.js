@@ -9,8 +9,80 @@ var numShips = 0;
     H = Hit
     @ = Ship
 */
-function placeShips(){
 
+function click(row, col)
+{
+    checkForShip(row,col);
+    checkForWinner(row,ship);
+}
+
+function switchPlayer() {
+    if(player = 1) {
+        player = 2;
+        drawGuessBoard(board1);
+        drawPlayerBoard(board2);
+    }
+    else {
+        player = 1;
+        drawGuessBoard(board2);
+        drawPlayerBoard(board1);
+    }
+}
+
+function drawGuessBoard(newBoard) {
+    num = 1;
+    let coord = document.getElementById("guessBoard"+num);
+    for(var i = 0; i<9; i++){
+        for(var j = 0; j<9; j++) {
+            if(newBoard[i][j] != '@')
+            {
+                coord = newBoard[i][j]
+            }
+            else {
+                coord = '*';
+            }
+            num ++;
+            coord = document.getElementById("guessBoard" + num);
+        }
+    }
+}
+
+function drawPlayerBoard(newBoard) {
+    num = 1;
+    let coord = document.getElementById("playerBoard"+num);
+    for(var i = 0; i<9; i++){
+        for(var j = 0; j<9; j++) {
+            coord = newBoard[i][j]
+            num ++;
+            coord = document.getElementById("playerBoard" + num);
+        }
+    }
+}
+
+var row = '';
+var col = '';
+function checkForShip(row, col)
+{
+    console.log("HI i am checking for ship");    if(player == 1) {
+       if(board2[row-1][col-1] == '*') {
+           board2[row-1][col-1] = 'M';
+           document.querySelector("#result").innerText = " MISS "
+       }
+       else {
+           board2[row-1][col-1] = 'H'
+           document.querySelector("#result").innerText = " HIT "
+       }
+    }
+    else {
+        if(board2[row-1][col-1] == '*') {
+            board2[row-1][col-1] = 'M';
+            document.querySelector("#result").innerText = " MISS "
+        }
+        else {
+            board2[row-1][col-1] = 'H'
+            document.querySelector("#result").innerText = " HIT "
+        }
+    }
 }
 
 //length: length of the ship
@@ -123,44 +195,29 @@ function checkForWinner()
     {
       for(int j=0; j<9; j++)
       {
-        if(board[i][j]=='H')
+        if(board1[i][j]=='H') //will need to be updated to work for either board
         numH++;
       }
     }
-    if(numShips==1)
+    if(numShips==1 && numH==1)
     {
-      if(numH==1)
-      {
         won = true;
-      }
     }
-    if(numShips==2)
+    if(numShips==2 && numH==3)
     {
-      if(numH==3)
-      {
         won = true;
-      }
     }
-    if(numShips==3)
+    if(numShips==3 && numH==6)
     {
-      if(numH==6)
-      {
         won = true;
-      }
     }
-    if(numShips==4)
+    if(numShips==4 && numH==10)
     {
-      if(numH==10)
-      {
         won = true;
-      }
     }
-    if(numShips==5)
+    if(numShips==5 && numH==15)
     {
-      if(numH==15)
-      {
         won = true;
-      }
     }
   return won;
 }
