@@ -9,103 +9,6 @@ var numShips = 0;
     H = Hit
     @ = Ship
 */
-function placeShips(){
-
-}
-//x: x position
-//y: y position
-//length: length of the ship
-//horizontal: true if the boat is being placed horizontally
-function placeShip(x,y,board,length,horizontal){
-  if(checkPlacement(x,y,board,length,horizontal)){
-    if(horizontal){
-      for(i = 0; i < length; i++){ 
-      }
-    }else{
-
-    }
-  }
-}
-
-      
-
-function click(row, col) 
-{
-    checkForShip(row,col);
-    checkForWinner(row,ship);
-}
-
-function switchPlayer() {
-    if(player = 1) {
-        player = 2;
-        drawGuessBoard(board1);
-        drawPlayerBoard(board2);
-    }
-    else {
-        player = 1;
-        drawGuessBoard(board2);
-        drawPlayerBoard(board1);
-    }
-}
-
-function drawGuessBoard(newBoard) {
-    num = 1;
-    let coord = document.getElementById("guessBoard"+num);
-    for(var i = 0; i<9; i++){
-        for(var j = 0; j<9; j++) {
-            if(newBoard[i][j] != '@')
-            {
-                coord = newBoard[i][j]
-            }
-            else {
-                coord = '*';
-            }
-            num ++;
-            coord = document.getElementById("guessBoard" + num);
-        }
-    }
-}
-
-function drawPlayerBoard(newBoard) {
-    num = 1;
-    let coord = document.getElementById("playerBoard"+num);
-    for(var i = 0; i<9; i++){
-        for(var j = 0; j<9; j++) {
-            coord = newBoard[i][j]
-            num ++;
-            coord = document.getElementById("playerBoard" + num);
-        }
-    }
-}
-
-var row = '';
-var col = '';
-function checkForShip(row, col)
-{
-    console.log("HI i am checking for ship");    if(player == 1) {
-       if(board2[row-1][col-1] == '*') {
-           board2[row-1][col-1] = 'M';
-           document.querySelector("#result").innerText = " MISS "
-       }
-       else {
-           board2[row-1][col-1] = 'H'
-           document.querySelector("#result").innerText = " HIT "
-       }
-    }
-    else {
-        if(board2[row-1][col-1] == '*') {
-            board2[row-1][col-1] = 'M';
-            document.querySelector("#result").innerText = " MISS "
-        }
-        else {
-            board2[row-1][col-1] = 'H'
-            document.querySelector("#result").innerText = " HIT "
-        }
-    }
-}
-
-function checkPlacement(x,y,board,length,horizontal){
-}
 
 //length: length of the ship
 //horizontal: true if the boat is being placed horizontally
@@ -166,7 +69,9 @@ function checkPlacement(row,col,board,length,horizontal){
   }
   return valid;
 }
+
 function createBoards(){
+    console.log("the boards were created");
   for(i = 0; i < 9; i++){
     board1[i]=[];
     board2[i]=[];
@@ -175,11 +80,52 @@ function createBoards(){
       board2[i][j]="*";
     }
   }
-function click(row, col)
+}
+
+function clickCheck(row, col)
 {
     checkForShip(row,col);
-    checkForWinner(row,ship);
+   // checkForWinner(row,ship);
 }
+
+function switchPlayer() {
+    if(player = 1) {
+        player = 2;
+        drawGuessBoard(board1);
+        drawPlayerBoard(board2);
+    }
+    else {
+        player = 1;
+        drawGuessBoard(board2);
+        drawPlayerBoard(board1);
+    }
+}
+
+function drawGuessBoard(newBoard) {
+    console.log("drawGuessBoard got called");
+    for(var i = 0; i<9; i++){
+        for(var j = 0; j<9; j++) {
+            if(newBoard[i][j] != '@')
+            {
+                document.querySelector("cell"+(i+1)+(j+1)).innerText = newBoard [i][j];
+            }
+            else {
+                document.querySelector("cell"+(i+1)+(j+1)).innerText = '*';            }
+        }
+    }
+}
+
+function drawPlayerBoard(newBoard) {
+    num = 1;
+    let coord = document.getElementById("playerBoard"+1+1);
+    for(var i = 0; i<9; i++){
+        for(var j = 0; j<9; j++) {
+            coord = newBoard[i][j]
+            coord = document.getElementById("guessBoard" + (i+1) + (j+1));
+        }
+    }
+}
+
 
 var row = '';
 var col = '';
@@ -194,7 +140,6 @@ function checkForShip(row, col)
            board2[row-1][col-1] = 'H'
            document.querySelector("#result").innerText = " HIT "
        }
-       player = 2;
     }
     else {
         if(board2[row-1][col-1] == '*') {
@@ -205,20 +150,32 @@ function checkForShip(row, col)
             board2[row-1][col-1] = 'H'
             document.querySelector("#result").innerText = " HIT "
         }
-        player = 1;
     }
+drawGuessBoard(board1);
 }
 
 function checkForWinner()
 {
   var won = false;
   var numH = 0;
-    for(int i=0; i<9; i++)
+    for(var i=0; i<9; i++)
     {
-      for(int j=0; j<9; j++)
+      for(var j=0; j<9; j++)
       {
-        if(board1[i][j]=='H') //will need to be updated to work for either board
-        numH++;
+        if(player == 1)
+        {
+          if(board1[i][j]=='H')
+          {
+            numH++;
+          }
+        }
+        if(player == 2)
+        {
+          if(board2[i][j]=='H')
+          {
+            numH++;
+          }
+        }
       }
     }
     if(numShips==1 && numH==1)
@@ -240,6 +197,10 @@ function checkForWinner()
     if(numShips==5 && numH==15)
     {
         won = true;
+    }
+    if(won)
+    {
+      document.querySelector("#ships").innerText = " Congrats! You won. Refresh to play again. "
     }
   return won;
 }
