@@ -162,8 +162,20 @@ function checkForWinner()
     {
       for(var j=0; j<9; j++)
       {
-        if(board1[i][j]=='H') //will need to be updated to work for either board
-        numH++;
+        if(player == 1)
+        {
+          if(board1[i][j]=='H')
+          {
+            numH++;
+          }
+        }
+        if(player == 2)
+        {
+          if(board2[i][j]=='H')
+          {
+            numH++;
+          }
+        }
       }
     }
     if(numShips==1 && numH==1)
@@ -185,6 +197,10 @@ function checkForWinner()
     if(numShips==5 && numH==15)
     {
         won = true;
+    }
+    if(won)
+    {
+      document.querySelector("#ships").innerText = " Congrats! You won. Refresh to play again. "
     }
   return won;
 }
