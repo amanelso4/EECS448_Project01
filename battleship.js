@@ -85,7 +85,7 @@ function createBoards(){
 function clickCheck(row, col)
 {
     checkForShip(row,col);
-   // checkForWinner(row,ship);
+    checkForWinner();
 }
 
 function switchPlayer() {
