@@ -1,4 +1,5 @@
 # Run the Game
+Clone the [repo](https://github.com/amanelso4/EECS448_Project01) with `git clone https://github.com/amanelso4/EECS448_Project01.git`
 Open `board.html`  
 Refresh to restart
 
