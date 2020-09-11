@@ -16,8 +16,6 @@
     <button onclick="numShipFunction(4)" id="4Ship">4</button>
     <button onclick="numShipFunction(5)" id="5Ship">5</button>
 </div>
-<button onclick="toggleDirection()" id="toggleDir">Placing Horizontally</button>
-
 
 <p id="ships"> </p>
 
@@ -26,10 +24,12 @@
 <br>
 
 <h2 id="result"></h2>
-<button id="ready" onclick="drawBoards()" style="display:none">Ready</button>
-<br>
-<button id="switch" onclick="switchPlayer()">Switch Players</button>
-
+<div id="buttons">
+  <button id="ready" onclick="drawBoards()" style="display:none">Ready</button>
+  <button id="switch" onclick="switchPlayer()">Switch Players</button>
+  <br>
+  <button onclick="toggleDirection()" id="toggleDir">Placing Horizontally</button>
+</div>
 <div id="boardContainer">
     <!-- BOARD A -->
         <div class="grid-container boardA">

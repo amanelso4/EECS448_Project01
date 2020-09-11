@@ -54,7 +54,10 @@ border: 3px solid rgb(100, 100, 100);
 height: 50px;
 width: 50px;
 }
+#buttons{
+  text-align: center;
 
+}
 #switch {
     border: 2px solid red;
     color: black;
@@ -66,7 +69,6 @@ width: 50px;
     margin-top: 20px;
     margin-bottom: 20px;
     align-content: center;
-    margin-left: 800px;
 }
 
 #ready{
@@ -80,7 +82,6 @@ width: 50px;
     margin-top: 20px;
     margin-bottom: 20px;
     align-content: center;
-    margin-left: 825px;
 }
 #boardContainer{
   display:flex;
