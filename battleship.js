@@ -239,7 +239,7 @@ function hideBoards() {
 function drawGuessBoard(newBoard) {
     for (var i = 0; i < 9; i++) {
         for (var j = 0; j < 9; j++) {
-            if (newBoard[i][j] == 'H') {
+            if (newBoard[i][j].startsWith('H')) {
                 colorShip((i + 1), (j + 1));
             }
             else if (newBoard[i][j] == 'M') {
@@ -248,6 +248,7 @@ function drawGuessBoard(newBoard) {
             else {
                 colorBlue((i + 1), (j + 1));
             }
+            clearLabel(i + 1, j + 1);
         }
     }
 }
@@ -261,14 +262,16 @@ function drawGuessBoard(newBoard) {
 function drawPlayerBoard(newBoard) {
     for (var i = 0; i < 9; i++) {
         for (var j = 0; j < 9; j++) {
-            if (newBoard[i][j] == 'H') {
+            if (newBoard[i][j].startsWith('H')) {
                 colorShip2((i + 1), (j + 1));
+                labelShip((i + 1), (j + 1), newBoard[i][j][1]);
             }
             else if (newBoard[i][j] == 'M') {
                 colorMiss2((i + 1), (j + 1));
             }
             else if (newBoard[i][j].startsWith('@')) {
                 colorShipNoHit((i + 1), (j + 1));
+                labelShip((i + 1), (j + 1), newBoard[i][j][1]);
             }
             else {
                 colorBlue2((i + 1), (j + 1));
@@ -276,6 +279,28 @@ function drawPlayerBoard(newBoard) {
 
         }
     }
+}
+
+
+/**
+ * Draw a ship's number.
+ * 
+ * @param {number} row The row of the ship to label.
+ * @param {number} col The column of the ship to label.
+ * @param {string} shipNumber The ship's number.
+ */
+function labelShip(row, col, shipNumber) {
+    document.getElementById('B' + col + row).innerText = shipNumber;
+}
+
+/**
+ * Clear the label for the given cell.
+ * 
+ * @param {number} row The row of the label to clear.
+ * @param {number} col The column of the label to clear.
+ */
+function clearLabel(row, col) {
+    document.getElementById('B' + col + row).innerText = "";
 }
 
 /**
@@ -378,7 +403,7 @@ function checkForShip(row, col) {
             colorMiss(row, col);
         }
         else if (board2[row - 1][col - 1].startsWith('@')) {
-            board2[row - 1][col - 1] = 'H';
+            board2[row - 1][col - 1] = 'H' + board2[row - 1][col - 1][1];
             document.querySelector("#result").innerText = " HIT ";
             colorShip(row, col);
         }
@@ -393,7 +418,7 @@ function checkForShip(row, col) {
             colorMiss(row, col);
         }
         else if (board1[row - 1][col - 1].startsWith('@')) {
-            board1[row - 1][col - 1] = 'H';
+            board1[row - 1][col - 1] = 'H' + board1[row - 1][col - 1][1];
             document.querySelector("#result").innerText = " HIT ";
             colorShip(row, col);
         }
@@ -412,12 +437,12 @@ function checkForWinner() {
     for (var i = 0; i < 9; i++) {
         for (var j = 0; j < 9; j++) {
             if (player == 1) {
-                if (board1[i][j] == 'H') {
+                if (board1[i][j].startsWith('H')) {
                     numH++;
                 }
             }
             if (player == 2) {
-                if (board2[i][j] == 'H') {
+                if (board2[i][j].startsWith('H')) {
                     numH++;
                 }
             }
