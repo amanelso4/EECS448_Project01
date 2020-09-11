@@ -76,7 +76,7 @@ height: 50px;
 width: 50px;
 }
 
-#placedShips {
+#switch,#ready {
     border: 2px solid red;
     color: black;
     background-color: white;
@@ -90,8 +90,8 @@ width: 50px;
     margin-left: 630px;
 }
 
-#placedShips:hover {
-    background-color: red; 
+#switch:hover,#ready:hover {
+    background-color: red;
     border: none;
     color: white;
     padding: 17px 32px;
