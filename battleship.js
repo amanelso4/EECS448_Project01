@@ -4,6 +4,7 @@ var board1 = [];
 var board2 = [];
 var numShips = 0;
 
+var waitForSwitch=false;
 var horizontal = true;
 var placing = true;
 var placingNum = 1;
@@ -18,7 +19,7 @@ var placingNum = 1;
 function numShipFunction(num){
     document.getElementById('ships').innerHTML = 'Place your ' + placingNum + '-length ship.';
     numShips = num;
-
+    document.getElementById("numShips").remove();
     for(var i = 1; i < 6; i++){
         document.getElementById(i + "Ship").remove();
     }
@@ -35,6 +36,7 @@ function toggleDirection() {
     }
     document.getElementById('toggleDir').innerHTML = 'Placing ' + place_dir;
 }
+
 
 
 //length: length of the ship
@@ -106,7 +108,7 @@ function setup() {
 function clickCheck(board_num, col, row)
 {
     console.log(board_num, row, col);
-    if (placing) {
+    if (placing && !waitForSwitch) {
         if (numShips == 0 || board_num !== 2) {
             // Have not selected number of ships or clicked wrong board
             return;
@@ -119,9 +121,10 @@ function clickCheck(board_num, col, row)
         if (placingNum > numShips) {
             if (player == 1) {
                 placingNum = 1;
-                player = 2;
+                waitForSwitch=true;
             } else {
                 placing = false;
+                waitForSwitch=true;
             }
         }
         if (placing) {
@@ -129,8 +132,9 @@ function clickCheck(board_num, col, row)
         } else {
             document.getElementById('ships').innerHTML = 'CHOOSE WHERE TO SHOOT.';
         }
-    } else if (board_num == 1) {
+    } else if (board_num == 1 &&!waitForSwitch) {
         checkForShip(row,col);
+        waitForSwitch=true;
     }
 }
 
@@ -147,20 +151,39 @@ function getBoard(num=NaN) {
 }
 
 function switchPlayer() {
+  if(waitForSwitch){
     if(player == 1) {
         player = 2;
+        hideBoards();
         drawGuessBoard(board1);
         drawPlayerBoard(board2);
         document.querySelector("#playersTurn").innerText = " It is now Player 2's turn! ";
     }
     else {
         player = 1;
+        hideBoards();
         drawGuessBoard(board2);
         drawPlayerBoard(board1);
         document.querySelector("#playersTurn").innerText = " It is now Player 1's turn! ";
     }
+    waitForSwitch=false;
+    document.querySelector("#result").innerText = "  ";
+  }
+  else{
+    document.querySelector("#result").innerText = " You have not finished your turn! ";
+  }
+  checkForWinner();
 }
-
+function drawBoards(){
+  document.getElementsByClassName('grid-container boardA')[0].style.visibility = 'visible';
+  document.getElementsByClassName('grid-container boardB')[0].style.visibility = 'visible';
+  document.getElementById('switch').style.visibility='visible';
+}
+function hideBoards(){
+  document.getElementsByClassName('grid-container boardA')[0].style.visibility = 'hidden';
+  document.getElementsByClassName('grid-container boardB')[0].style.visibility = 'hidden';
+  document.getElementById('switch').style.visibility='hidden';
+}
 function drawGuessBoard(newBoard) {
     for(var i = 0; i<9; i++){
         for(var j = 0; j<9; j++) {
@@ -258,12 +281,12 @@ function checkForShip(row, col)
     else {
         if(board1[row-1][col-1] == '*') {
             board1[row-1][col-1] = 'M';
-            document.querySelector("#result").innerText = " MISS "
+            document.querySelector("#result").innerText = " MISS ";
             colorMiss(row,col);
         }
         else if(board1[row-1][col-1].startsWith('@')) {
-            board1[row-1][col-1] = 'H'
-            document.querySelector("#result").innerText = " HIT "
+            board1[row-1][col-1] = 'H';
+            document.querySelector("#result").innerText = " HIT ";
             colorShip(row,col);
         }
         else {
@@ -318,7 +341,9 @@ function checkForWinner()
     }
     if(won)
     {
-      document.getElementById('ships').innerText = " Congrats! You won. Refresh to play again. "
+      document.getElementById('ships').innerText = " Congrats! Player" + player + " won! Refresh to play again. "
+      hideBoards();
+      document.getElementById('ready').style.visibility='hidden';
     }
   return won;
 }
