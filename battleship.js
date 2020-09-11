@@ -125,6 +125,7 @@ function clickCheck(board_num, col, row)
             } else {
                 placing = false;
                 waitForSwitch=true;
+                document.getElementById('toggleDir').style.visibility='hidden';
             }
         }
         if (placing) {
