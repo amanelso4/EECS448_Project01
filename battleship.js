@@ -105,8 +105,6 @@ function setup() {
 
 function clickCheck(board_num, col, row)
 {
-    col--;  // Account for 1-indexing in HTML code
-    row--;
     console.log(board_num, row, col);
     if (placing) { 
         if (numShips == 0 || board_num !== 2) {
@@ -114,7 +112,7 @@ function clickCheck(board_num, col, row)
             return;
         }
         if (placingNum <= numShips) {
-            if (placeShip(row, col, getBoard(), placingNum, horizontal)) {
+            if (placeShip(row-1, col-1, getBoard(), placingNum, horizontal)) {
                 placingNum++;
             }
         }
@@ -131,7 +129,7 @@ function clickCheck(board_num, col, row)
         } else {
             document.getElementById('ships').innerHTML = 'CHOOSE WHERE TO SHOOT.';
         }
-    } else {
+    } else if (board_num == 1) {
         checkForShip(row,col);
     }
 }
@@ -193,9 +191,12 @@ function drawPlayerBoard(newBoard) {
             if(newBoard[i][j].startsWith('@') || newBoard[i][j] == 'H') {
                 colorShip2((i+1), (j+1));
             }
-            else {
-                colorMiss2((i+1),(j+1));
-            }
+            else if(newBoard[i][j] == 'M') {
+                colorMiss2((i+1),(j+1));          
+             }
+             else {
+                 colorBlue2((i+1), (j+1));
+             }
             
         }
     }
@@ -230,6 +231,11 @@ function colorBlue(row, col){
     document.getElementById('A'+col+row).classList.remove('red');
     document.getElementById('A'+col+row).classList.remove('miss');
     document.getElementById('A'+col+row).classList.add('empty');
+}
+function colorBlue2(row, col){
+    document.getElementById('B'+col+row).classList.remove('red');
+    document.getElementById('B'+col+row).classList.remove('miss');
+    document.getElementById('B'+col+row).classList.add('empty');
 }
 
 function checkForShip(row, col)
