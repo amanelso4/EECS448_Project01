@@ -32,30 +32,10 @@ h2 {
     padding-top: 20px;
 }
 
-.wrap
-{
-    width: 100%;
-    overflow:auto;
-    padding:2px;
-}
-.fleft 
-{
-    margin-right: 20%;
-    align-items: center;
-    float: right; 
-    width: 30%;
-}
-.fright
-{
-    margin-left: 20%;
-    align-items: center;
-    float: left;
-    width: 30%;
-}
-
 .grid-container {
     display: grid;
     grid-template-columns: repeat(10, 50px);
+    padding: 50px;
 }
 
 .numLabels{
@@ -74,8 +54,11 @@ border: 3px solid rgb(100, 100, 100);
 height: 50px;
 width: 50px;
 }
+#buttons{
+  text-align: center;
 
-#switch,#ready {
+}
+#switch {
     border: 2px solid red;
     color: black;
     background-color: white;
@@ -86,7 +69,23 @@ width: 50px;
     margin-top: 20px;
     margin-bottom: 20px;
     align-content: center;
-    margin-left: 630px;
+}
+
+#ready{
+    border: 2px solid red;
+    color: black;
+    background-color: white;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    padding: 15px 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    align-content: center;
+}
+#boardContainer{
+  display:flex;
+  justify-content: center;
 }
 
 #switch:hover,#ready:hover {
@@ -101,10 +100,30 @@ width: 50px;
     background-color: red;
 }
 
+.grey{
+    background-color: darkgray;
+}
+
 .empty{
     background-color: lightblue;
 }
 
 .miss{
     background-color:rgb(4, 54, 100);
+}
+
+#result{
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+    color: blue;
+}
+#toggleDir {
+    background-color: white;
+    padding: 10px;
+    color: black;
+}
+
+#toggleDir:hover {
+    background-color: lightblue;
 }

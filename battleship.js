@@ -145,6 +145,7 @@ function clickCheck(board_num, col, row)
             }
         }
         if (placingNum > numShips) {
+          document.getElementById('ready').style.display='none';
             if (player == 1) {
                 placingNum = 1;
                 waitForSwitch=true;
@@ -162,6 +163,7 @@ function clickCheck(board_num, col, row)
     } else if (board_num == 1 &&!waitForSwitch) {
         checkForShip(row,col);
         waitForSwitch=true;
+        document.getElementById('ready').style.display='none';
     }
 }
 
@@ -202,6 +204,7 @@ function switchPlayer() {
         document.querySelector("#playersTurn").innerText = " It is now Player 1's turn! ";
     }
     waitForSwitch=false;
+    document.getElementById('ready').style.display='inline-block';
     document.querySelector("#result").innerText = "  ";
   }
   else{
@@ -216,7 +219,8 @@ function switchPlayer() {
 function drawBoards(){
   document.getElementsByClassName('grid-container boardA')[0].style.visibility = 'visible';
   document.getElementsByClassName('grid-container boardB')[0].style.visibility = 'visible';
-  document.getElementById('switch').style.visibility='visible';
+  document.getElementById('switch').style.display='inline-block';
+  document.getElementById('ready').style.display='none';
 }
 
 /**
@@ -225,7 +229,7 @@ function drawBoards(){
 function hideBoards(){
   document.getElementsByClassName('grid-container boardA')[0].style.visibility = 'hidden';
   document.getElementsByClassName('grid-container boardB')[0].style.visibility = 'hidden';
-  document.getElementById('switch').style.visibility='hidden';
+  document.getElementById('switch').style.display='none';
 }
 
 /**
@@ -259,11 +263,14 @@ function drawGuessBoard(newBoard) {
 function drawPlayerBoard(newBoard) {
     for(var i = 0; i<9; i++){
         for(var j = 0; j<9; j++) {
-            if(newBoard[i][j].startsWith('@') || newBoard[i][j] == 'H') {
+            if(newBoard[i][j] == 'H') {
                 colorShip2((i+1), (j+1));
             }
             else if(newBoard[i][j] == 'M') {
                 colorMiss2((i+1),(j+1));
+             }
+             else if(newBoard[i][j].startsWith('@')) {
+                 colorShipNoHit((i+1),(j+1));
              }
              else {
                  colorBlue2((i+1), (j+1));
@@ -274,7 +281,7 @@ function drawPlayerBoard(newBoard) {
 }
 
 /**
- * Color a cell as a ship on board one by row and column position.
+ * Color a cell as a hit on board one by row and column position.
  * 
  * @param {number} row The number of the row to color.
  * @param {number} col The number of the column to color.
@@ -298,7 +305,7 @@ function colorMiss(row, col){
 }
 
 /**
- * Color a cell as a ship on board two by row and column position.
+ * Color a cell as a hit on board two by row and column position.
  * 
  * @param {number} row The number of the row to color.
  * @param {number} col The number of the column to color.
@@ -306,11 +313,25 @@ function colorMiss(row, col){
 function colorShip2(row, col){
     document.getElementById('B'+col+row).classList.remove('empty');
     document.getElementById('B'+col+row).classList.remove('miss');
+    document.getElementById('B'+col+row).classList.remove('grey');
     document.getElementById('B'+col+row).classList.add('red');
 }
 
 /**
- * Color a cell as a miss on board two by row and column position.
+ * Color a cell as ship on board one by row and column position.
+ * 
+ * @param {number} row The number of the row to color.
+ * @param {number} col The number of the column to color.
+ */
+function colorShipNoHit(row, col){
+    document.getElementById('B'+col+row).classList.remove('empty');
+    document.getElementById('B'+col+row).classList.remove('miss');
+    document.getElementById('B'+col+row).classList.remove('red');
+    document.getElementById('B'+col+row).classList.add('grey');
+}
+
+/**
+ * Color a cell as miss on board two by row and column position.
  * 
  * @param {number} row The number of the row to color.
  * @param {number} col The number of the column to color.
@@ -436,7 +457,7 @@ function checkForWinner()
     {
       document.getElementById('ships').innerText = " Congrats! Player" + player + " won! Refresh to play again. "
       hideBoards();
-      document.getElementById('ready').style.visibility='hidden';
+      document.getElementById('ready').style.display='none';
     }
   return won;
 }
