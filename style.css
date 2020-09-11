@@ -76,7 +76,7 @@ height: 50px;
 width: 50px;
 }
 
-#switch,#ready {
+#switch {
     border: 2px solid red;
     color: black;
     background-color: white;
@@ -87,7 +87,21 @@ width: 50px;
     margin-top: 20px;
     margin-bottom: 20px;
     align-content: center;
-    margin-left: 630px;
+    margin-left: 800px;
+}
+
+#ready{
+    border: 2px solid red;
+    color: black;
+    background-color: white;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    padding: 15px 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    align-content: center;
+    margin-left: 825px;
 }
 
 #switch:hover,#ready:hover {
