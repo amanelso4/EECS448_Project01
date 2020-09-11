@@ -32,6 +32,7 @@ function placeShip(row,col,board,length,horizontal){
     }
   }
 }
+
 function checkPlacement(row,col,board,length,horizontal){
   let valid = true;
   if(horizontal){
@@ -93,6 +94,7 @@ function switchPlayer() {
         player = 2;
         drawGuessBoard(board1);
         drawPlayerBoard(board2);
+        
     }
     else {
         player = 1;
@@ -107,10 +109,10 @@ function drawGuessBoard(newBoard) {
         for(var j = 0; j<9; j++) {
             if(newBoard[i][j] != '@')
             {
-                document.querySelector("cell"+(i+1)+(j+1)).innerText = newBoard [i][j];
+                document.querySelector("hi11").innerHTML = newBoard [i][j];
             }
             else {
-                document.querySelector("cell"+(i+1)+(j+1)).innerText = '*';            }
+                document.querySelector("hi11").innerHTML = '*';            }
         }
     }
 }
