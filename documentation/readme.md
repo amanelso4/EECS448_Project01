@@ -1,3 +1,7 @@
+# Run the Game
+Open `board.html`  
+Refresh to restart
+
 # Setting Up the Dev Environment
 
 1. Clone the [repo](https://github.com/amanelso4/EECS448_Project01) with `git clone https://github.com/amanelso4/EECS448_Project01.git`
