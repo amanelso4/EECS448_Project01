@@ -22,7 +22,7 @@ var classifications = ['empty', 'red', 'grey', 'miss', 'sunk'];
  * @param {number} num The number of ships to play with this game 
  */
 function numShipFunction(num) {
-    document.getElementById('ships').innerHTML = 'Place your ' + placingNum + '-length ship.';
+    document.getElementById('ships').innerHTML = 'Place your ' + placingNum + '-length ship on your board';
     numShips = num;
     document.getElementById("numShips").remove();
     for (var i = 1; i < 6; i++) {
@@ -159,9 +159,13 @@ function clickCheck(board_num, col, row) {
             }
         }
         if (placing) {
-            document.getElementById('ships').innerHTML = 'Place your ' + placingNum + '-length ship.';
+            if (waitForSwitch) {
+                document.getElementById('ships').innerHTML = 'Click Switch Players';
+            } else {
+                document.getElementById('ships').innerHTML = 'Place your ' + placingNum + '-length ship on your board';
+            }
         } else {
-            document.getElementById('ships').innerHTML = 'CHOOSE WHERE TO SHOOT.';
+            document.getElementById('ships').innerHTML = 'Click Switch Players';
         }
     } else if (board_num == 1 && !waitForSwitch) {
         waitForSwitch = checkForShip(row, col);
@@ -206,6 +210,8 @@ function switchPlayer() {
             drawPlayerBoard(board1);
             document.querySelector("#playersTurn").innerText = " It is now Player 1's turn! ";
         }
+        document.getElementById('ships').innerHTML = 'Click Ready';
+        horizontal = true;
         waitForSwitch = false;
         document.getElementById('ready').style.display = 'inline-block';
         document.querySelector("#result").innerText = "  ";
@@ -222,8 +228,16 @@ function switchPlayer() {
 function drawBoards() {
     document.getElementsByClassName('grid-container boardA')[0].style.visibility = 'visible';
     document.getElementsByClassName('grid-container boardB')[0].style.visibility = 'visible';
+    document.getElementsByClassName('boardSeparator')[0].style.visibility = 'visible';
+    document.getElementsByClassName('boardSeparator')[1].style.visibility = 'visible';
     document.getElementById('switch').style.display = 'inline-block';
     document.getElementById('ready').style.display = 'none';
+
+    if (placing) {
+        document.getElementById('ships').innerHTML = 'Place your ' + placingNum + '-length ship on your board';
+    } else {
+        document.getElementById('ships').innerHTML = 'Choose where to shoot on enemy\'s board';
+    }
 }
 
 /**
@@ -232,6 +246,8 @@ function drawBoards() {
 function hideBoards() {
     document.getElementsByClassName('grid-container boardA')[0].style.visibility = 'hidden';
     document.getElementsByClassName('grid-container boardB')[0].style.visibility = 'hidden';
+    document.getElementsByClassName('boardSeparator')[0].style.visibility = 'hidden';
+    document.getElementsByClassName('boardSeparator')[1].style.visibility = 'hidden';
     document.getElementById('switch').style.display = 'none';
 }
 
@@ -415,6 +431,7 @@ function checkForShip(row, col) {
     }
     drawGuessBoard(board);
     drawPlayerBoard(otherBoard);
+    document.getElementById('ships').innerHTML = 'Click Switch Players';
     return true;
 }
 
