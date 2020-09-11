@@ -24,124 +24,258 @@
     
     <br>
 
-    <div>
-        <p id = "letterLabels">A B C D E F G H I</p>
-    </div>
-
     <span id= "result"></span>
 
-    <div class="grid-container">
+    <!-- BOARD A -->
+    <div class="grid-container boardA">
         <div class = "numLabels">
-           <div>1</div>
-           <div>2</div>
-           <div>3</div>
-           <div>4</div>
-           <div>5</div>
-           <div>6</div>
-           <div>7</div>
-           <div>8</div>
-           <div>9</div>
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+            <div>7</div>
+            <div>8</div>
+            <div>9</div>
         </div>
         <div class="columnA">
-            <div class="cell empty" id="cell11" onclick = "clickCheck(1,1)"></div>
-            <div class="cell empty" id="cell12" onclick = "clickCheck(1,2)"></div>
-            <div class="cell empty" id="cell13" onclick = "clickCheck(1,3)"></div>
-            <div class="cell empty" id="cell14" onclick = "clickCheck(1,4)"></div>
-            <div class="cell empty" id="cell15" onclick = "clickCheck(1,5)"></div>
-            <div class="cell empty" id="cell16" onclick = "clickCheck(1,6)"></div>
-            <div class="cell empty" id="cell17" onclick = "clickCheck(1,7)"></div>
-            <div class="cell empty" id="cell18" onclick = "clickCheck(1,8)"></div>
-            <div class="cell empty" id="cell19" onclick = "clickCheck(1,9)"></div>
+            <div class = "letterLabels">A</div>
+            <div class="cell empty" id="A11" onclick = "clickCheck(1,1,1)"></div>
+            <div class="cell empty" id="A12" onclick = "clickCheck(1,1,2)"></div>
+            <div class="cell empty" id="A13" onclick = "clickCheck(1,1,3)"></div>
+            <div class="cell empty" id="A14" onclick = "clickCheck(1,1,4)"></div>
+            <div class="cell empty" id="A15" onclick = "clickCheck(1,1,5)"></div>
+            <div class="cell empty" id="A16" onclick = "clickCheck(1,1,6)"></div>
+            <div class="cell empty" id="A17" onclick = "clickCheck(1,1,7)"></div>
+            <div class="cell empty" id="A18" onclick = "clickCheck(1,1,8)"></div>
+            <div class="cell empty" id="A19" onclick = "clickCheck(1,1,9)"></div>
         </div>
         <div class="columnB">
-          <div class="cell empty" id="cell21" onclick = "clickCheck(2,1)"></div>
-          <div class="cell empty" id="cell22" onclick = "clickCheck(2,2)"></div>
-          <div class="cell empty" id="cell23" onclick = "clickCheck(2,3)"></div>
-          <div class="cell empty" id="cell24" onclick = "clickCheck(2,4)"></div>
-          <div class="cell empty" id="cell25" onclick = "clickCheck(2,5)"></div>
-          <div class="cell empty" id="cell26" onclick = "clickCheck(2,6)"></div>
-          <div class="cell empty" id="cell27" onclick = "clickCheck(2,7)"></div>
-          <div class="cell empty" id="cell28" onclick = "clickCheck(2,8)"></div>
-          <div class="cell empty" id="cell29" onclick = "clickCheck(2,9)"></div>
-      </div>
-      <div class="columnC">
-          <div class="cell empty" id="cell31" onclick = "clickCheck(3,1)"></div>
-          <div class="cell empty" id="cell32" onclick = "clickCheck(3,2)"></div>
-          <div class="cell empty" id="cell33" onclick = "clickCheck(3,3)"></div>
-          <div class="cell empty" id="cell34" onclick = "clickCheck(3,4)"></div>
-          <div class="cell empty" id="cell35" onclick = "clickCheck(3,5)"></div>
-          <div class="cell empty" id="cell36" onclick = "clickCheck(3,6)"></div>
-          <div class="cell empty" id="cell37" onclick = "clickCheck(3,7)"></div>
-          <div class="cell empty" id="cell38" onclick = "clickCheck(3,8)"></div>
-          <div class="cell empty" id="cell39" onclick = "clickCheck(3,9)"></div>
-      </div>
-      <div class="columnD">
-          <div class="cell empty" id="cell41" onclick = "clickCheck(4,1)"></div>
-          <div class="cell empty" id="cell42" onclick = "clickCheck(4,2)"></div>
-          <div class="cell empty" id="cell43" onclick = "clickCheck(4,3)"></div>
-          <div class="cell empty" id="cell44" onclick = "clickCheck(4,4)"></div>
-          <div class="cell empty" id="cell45" onclick = "clickCheck(4,5)"></div>
-          <div class="cell empty" id="cell46" onclick = "clickCheck(4,6)"></div>
-          <div class="cell empty" id="cell47" onclick = "clickCheck(4,7)"></div>
-          <div class="cell empty" id="cell48" onclick = "clickCheck(4,8)"></div>
-          <div class="cell empty" id="cell49" onclick = "clickCheck(4,9)"></div>
-      </div>
-      <div class="columnE">
-          <div class="cell empty" id="cell51" onclick = "clickCheck(5,1)"></div>
-          <div class="cell empty" id="cell52" onclick = "clickCheck(5,2)"></div>
-          <div class="cell empty" id="cell53" onclick = "clickCheck(5,3)"></div>
-          <div class="cell empty" id="cell54" onclick = "clickCheck(5,4)"></div>
-          <div class="cell empty" id="cell55" onclick = "clickCheck(5,5)"></div>
-          <div class="cell empty" id="cell56" onclick = "clickCheck(5,6)"></div>
-          <div class="cell empty" id="cell57" onclick = "clickCheck(5,7)"></div>
-          <div class="cell empty" id="cell58" onclick = "clickCheck(5,8)"></div>
-          <div class="cell empty" id="cell59" onclick = "clickCheck(5,9)"></div>
-      </div>
-      <div class="columnF">
-          <div class="cell empty" id="cell61" onclick = "clickCheck(6,1)"></div>
-          <div class="cell empty" id="cell62" onclick = "clickCheck(6,2)"></div>
-          <div class="cell empty" id="cell63" onclick = "clickCheck(6,3)"></div>
-          <div class="cell empty" id="cell64" onclick = "clickCheck(6,4)"></div>
-          <div class="cell empty" id="cell65" onclick = "clickCheck(6,5)"></div>
-          <div class="cell empty" id="cell66" onclick = "clickCheck(6,6)"></div>
-          <div class="cell empty" id="cell67" onclick = "clickCheck(6,7)"></div>
-          <div class="cell empty" id="cell68" onclick = "clickCheck(6,8)"></div>
-          <div class="cell empty" id="cell69" onclick = "clickCheck(6,9)"></div>
-      </div>
-      <div class="columnG">
-          <div class="cell empty" id="cell71" onclick = "clickCheck(7,1)"></div>
-          <div class="cell empty" id="cell72" onclick = "clickCheck(7,2)"></div>
-          <div class="cell empty" id="cell73" onclick = "clickCheck(7,3)"></div>
-          <div class="cell empty" id="cell74" onclick = "clickCheck(7,4)"></div>
-          <div class="cell empty" id="cell75" onclick = "clickCheck(7,5)"></div>
-          <div class="cell empty" id="cell76" onclick = "clickCheck(7,6)"></div>
-          <div class="cell empty" id="cell77" onclick = "clickCheck(7,7)"></div>
-          <div class="cell empty" id="cell78" onclick = "clickCheck(7,8)"></div>
-          <div class="cell empty" id="cell79" onclick = "clickCheck(7,9)"></div>
-      </div>
-      <div class="columnH">
-        <div class="cell empty" id="cell81" onclick = "clickCheck(8,1)"></div>
-        <div class="cell empty" id="cell82" onclick = "clickCheck(8,2)"></div>
-        <div class="cell empty" id="cell83" onclick = "clickCheck(8,3)"></div>
-        <div class="cell empty" id="cell84" onclick = "clickCheck(8,4)"></div>
-        <div class="cell empty" id="cell85" onclick = "clickCheck(8,5)"></div>
-        <div class="cell empty" id="cell86" onclick = "clickCheck(8,6)"></div>
-        <div class="cell empty" id="cell87" onclick = "clickCheck(8,7)"></div>
-        <div class="cell empty" id="cell88" onclick = "clickCheck(8,8)"></div>
-        <div class="cell empty" id="cell89" onclick = "clickCheck(8,9)"></div>
+            <div class = "letterLabels">B</div>
+            <div class="cell empty" id="A21" onclick = "clickCheck(1,2,1)"></div>
+            <div class="cell empty" id="A22" onclick = "clickCheck(1,2,2)"></div>
+            <div class="cell empty" id="A23" onclick = "clickCheck(1,2,3)"></div>
+            <div class="cell empty" id="A24" onclick = "clickCheck(1,2,4)"></div>
+            <div class="cell empty" id="A25" onclick = "clickCheck(1,2,5)"></div>
+            <div class="cell empty" id="A26" onclick = "clickCheck(1,2,6)"></div>
+            <div class="cell empty" id="A27" onclick = "clickCheck(1,2,7)"></div>
+            <div class="cell empty" id="A28" onclick = "clickCheck(1,2,8)"></div>
+            <div class="cell empty" id="A29" onclick = "clickCheck(1,2,9)"></div>
+        </div>
+        <div class="columnC">
+            <div class = "letterLabels">C</div>
+            <div class="cell empty" id="A31" onclick = "clickCheck(1,3,1)"></div>
+            <div class="cell empty" id="A32" onclick = "clickCheck(1,3,2)"></div>
+            <div class="cell empty" id="A33" onclick = "clickCheck(1,3,3)"></div>
+            <div class="cell empty" id="A34" onclick = "clickCheck(1,3,4)"></div>
+            <div class="cell empty" id="A35" onclick = "clickCheck(1,3,5)"></div>
+            <div class="cell empty" id="A36" onclick = "clickCheck(1,3,6)"></div>
+            <div class="cell empty" id="A37" onclick = "clickCheck(1,3,7)"></div>
+            <div class="cell empty" id="A38" onclick = "clickCheck(1,3,8)"></div>
+            <div class="cell empty" id="A39" onclick = "clickCheck(1,3,9)"></div>
+        </div>
+        <div class="columnD">
+            <div class = "letterLabels">D</div>
+            <div class="cell empty" id="A41" onclick = "clickCheck(1,4,1)"></div>
+            <div class="cell empty" id="A42" onclick = "clickCheck(1,4,2)"></div>
+            <div class="cell empty" id="A43" onclick = "clickCheck(1,4,3)"></div>
+            <div class="cell empty" id="A44" onclick = "clickCheck(1,4,4)"></div>
+            <div class="cell empty" id="A45" onclick = "clickCheck(1,4,5)"></div>
+            <div class="cell empty" id="A46" onclick = "clickCheck(1,4,6)"></div>
+            <div class="cell empty" id="A47" onclick = "clickCheck(1,4,7)"></div>
+            <div class="cell empty" id="A48" onclick = "clickCheck(1,4,8)"></div>
+            <div class="cell empty" id="A49" onclick = "clickCheck(1,4,9)"></div>
+        </div>
+        <div class="columnE">
+            <div class = "letterLabels">E</div>
+            <div class="cell empty" id="A51" onclick = "clickCheck(1,5,1)"></div>
+            <div class="cell empty" id="A52" onclick = "clickCheck(1,5,2)"></div>
+            <div class="cell empty" id="A53" onclick = "clickCheck(1,5,3)"></div>
+            <div class="cell empty" id="A54" onclick = "clickCheck(1,5,4)"></div>
+            <div class="cell empty" id="A55" onclick = "clickCheck(1,5,5)"></div>
+            <div class="cell empty" id="A56" onclick = "clickCheck(1,5,6)"></div>
+            <div class="cell empty" id="A57" onclick = "clickCheck(1,5,7)"></div>
+            <div class="cell empty" id="A58" onclick = "clickCheck(1,5,8)"></div>
+            <div class="cell empty" id="A59" onclick = "clickCheck(1,5,9)"></div>
+        </div>
+        <div class="columnF">
+            <div class = "letterLabels">F</div>
+            <div class="cell empty" id="A61" onclick = "clickCheck(1,6,1)"></div>
+            <div class="cell empty" id="A62" onclick = "clickCheck(1,6,2)"></div>
+            <div class="cell empty" id="A63" onclick = "clickCheck(1,6,3)"></div>
+            <div class="cell empty" id="A64" onclick = "clickCheck(1,6,4)"></div>
+            <div class="cell empty" id="A65" onclick = "clickCheck(1,6,5)"></div>
+            <div class="cell empty" id="A66" onclick = "clickCheck(1,6,6)"></div>
+            <div class="cell empty" id="A67" onclick = "clickCheck(1,6,7)"></div>
+            <div class="cell empty" id="A68" onclick = "clickCheck(1,6,8)"></div>
+            <div class="cell empty" id="A69" onclick = "clickCheck(1,6,9)"></div>
+        </div>
+        <div class="columnG">
+            <div class = "letterLabels">G</div>
+            <div class="cell empty" id="A71" onclick = "clickCheck(1,7,1)"></div>
+            <div class="cell empty" id="A72" onclick = "clickCheck(1,7,2)"></div>
+            <div class="cell empty" id="A73" onclick = "clickCheck(1,7,3)"></div>
+            <div class="cell empty" id="A74" onclick = "clickCheck(1,7,4)"></div>
+            <div class="cell empty" id="A75" onclick = "clickCheck(1,7,5)"></div>
+            <div class="cell empty" id="A76" onclick = "clickCheck(1,7,6)"></div>
+            <div class="cell empty" id="A77" onclick = "clickCheck(1,7,7)"></div>
+            <div class="cell empty" id="A78" onclick = "clickCheck(1,7,8)"></div>
+            <div class="cell empty" id="A79" onclick = "clickCheck(1,7,9)"></div>
+        </div>
+        <div class="columnH">
+            <div class = "letterLabels">H</div>
+            <div class="cell empty" id="A81" onclick = "clickCheck(1,8,1)"></div>
+            <div class="cell empty" id="A82" onclick = "clickCheck(1,8,2)"></div>
+            <div class="cell empty" id="A83" onclick = "clickCheck(1,8,3)"></div>
+            <div class="cell empty" id="A84" onclick = "clickCheck(1,8,4)"></div>
+            <div class="cell empty" id="A85" onclick = "clickCheck(1,8,5)"></div>
+            <div class="cell empty" id="A86" onclick = "clickCheck(1,8,6)"></div>
+            <div class="cell empty" id="A87" onclick = "clickCheck(1,8,7)"></div>
+            <div class="cell empty" id="A88" onclick = "clickCheck(1,8,8)"></div>
+            <div class="cell empty" id="A89" onclick = "clickCheck(1,8,9)"></div>
+        </div>
+        <div class="columnI">
+            <div class = "letterLabels">I</div>
+            <div class="cell empty" id="A91" onclick = "clickCheck(1,9,1)"></div>
+            <div class="cell empty" id="A92" onclick = "clickCheck(1,9,2)"></div>
+            <div class="cell empty" id="A93" onclick = "clickCheck(1,9,3)"></div>
+            <div class="cell empty" id="A94" onclick = "clickCheck(1,9,4)"></div>
+            <div class="cell empty" id="A95" onclick = "clickCheck(1,9,5)"></div>
+            <div class="cell empty" id="A96" onclick = "clickCheck(1,9,6)"></div>
+            <div class="cell empty" id="A97" onclick = "clickCheck(1,9,7)"></div>
+            <div class="cell empty" id="A98" onclick = "clickCheck(1,9,8)"></div>
+            <div class="cell empty" id="A99" onclick = "clickCheck(1,9,9)"></div>
+        </div>
     </div>
-    <div class="columnI">
-        <div class="cell empty" id="cell91" onclick = "clickCheck(9,1)"></div>
-        <div class="cell empty" id="cell92" onclick = "clickCheck(9,2)"></div>
-        <div class="cell empty" id="cell93" onclick = "clickCheck(9,3)"></div>
-        <div class="cell empty" id="cell94" onclick = "clickCheck(9,4)"></div>
-        <div class="cell empty" id="cell95" onclick = "clickCheck(9,5)"></div>
-        <div class="cell empty" id="cell96" onclick = "clickCheck(9,6)"></div>
-        <div class="cell empty" id="cell97" onclick = "clickCheck(9,7)"></div>
-        <div class="cell empty" id="cell98" onclick = "clickCheck(9,8)"></div>
-        <div class="cell empty" id="cell99" onclick = "clickCheck(9,9)"></div>
+
+    <button id = "placedShips" onclick = "switchPlayer()">Place Ships</button> 
+
+    <!-- BOARD B -->
+
+    <div class="grid-container boardB">
+            <div class = "numLabels">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+            <div>7</div>
+            <div>8</div>
+            <div>9</div>
+        </div>
+        <div class="columnA">
+            <div class = "letterLabels">A</div>
+            <div class="cell empty" id="B11" onclick = "clickCheck(2,1,1)"></div>
+            <div class="cell empty" id="B12" onclick = "clickCheck(2,1,2)"></div>
+            <div class="cell empty" id="B13" onclick = "clickCheck(2,1,3)"></div>
+            <div class="cell empty" id="B14" onclick = "clickCheck(2,1,4)"></div>
+            <div class="cell empty" id="B15" onclick = "clickCheck(2,1,5)"></div>
+            <div class="cell empty" id="B16" onclick = "clickCheck(2,1,6)"></div>
+            <div class="cell empty" id="B17" onclick = "clickCheck(2,1,7)"></div>
+            <div class="cell empty" id="B18" onclick = "clickCheck(2,1,8)"></div>
+            <div class="cell empty" id="B19" onclick = "clickCheck(2,1,9)"></div>
+        </div>
+        <div class="columnB">
+            <div class = "letterLabels">B</div>
+            <div class="cell empty" id="B21" onclick = "clickCheck(2,2,1)"></div>
+            <div class="cell empty" id="B22" onclick = "clickCheck(2,2,2)"></div>
+            <div class="cell empty" id="B23" onclick = "clickCheck(2,2,3)"></div>
+            <div class="cell empty" id="B24" onclick = "clickCheck(2,2,4)"></div>
+            <div class="cell empty" id="B25" onclick = "clickCheck(2,2,5)"></div>
+            <div class="cell empty" id="B26" onclick = "clickCheck(2,2,6)"></div>
+            <div class="cell empty" id="B27" onclick = "clickCheck(2,2,7)"></div>
+            <div class="cell empty" id="B28" onclick = "clickCheck(2,2,8)"></div>
+            <div class="cell empty" id="B29" onclick = "clickCheck(2,2,9)"></div>
+        </div>
+        <div class="columnC">
+            <div class = "letterLabels">C</div>
+            <div class="cell empty" id="B31" onclick = "clickCheck(2,3,1)"></div>
+            <div class="cell empty" id="B32" onclick = "clickCheck(2,3,2)"></div>
+            <div class="cell empty" id="B33" onclick = "clickCheck(2,3,3)"></div>
+            <div class="cell empty" id="B34" onclick = "clickCheck(2,3,4)"></div>
+            <div class="cell empty" id="B35" onclick = "clickCheck(2,3,5)"></div>
+            <div class="cell empty" id="B36" onclick = "clickCheck(2,3,6)"></div>
+            <div class="cell empty" id="B37" onclick = "clickCheck(2,3,7)"></div>
+            <div class="cell empty" id="B38" onclick = "clickCheck(2,3,8)"></div>
+            <div class="cell empty" id="B39" onclick = "clickCheck(2,3,9)"></div>
+        </div>
+        <div class="columnD">
+            <div class = "letterLabels">D</div>
+            <div class="cell empty" id="B41" onclick = "clickCheck(2,4,1)"></div>
+            <div class="cell empty" id="B42" onclick = "clickCheck(2,4,2)"></div>
+            <div class="cell empty" id="B43" onclick = "clickCheck(2,4,3)"></div>
+            <div class="cell empty" id="B44" onclick = "clickCheck(2,4,4)"></div>
+            <div class="cell empty" id="B45" onclick = "clickCheck(2,4,5)"></div>
+            <div class="cell empty" id="B46" onclick = "clickCheck(2,4,6)"></div>
+            <div class="cell empty" id="B47" onclick = "clickCheck(2,4,7)"></div>
+            <div class="cell empty" id="B48" onclick = "clickCheck(2,4,8)"></div>
+            <div class="cell empty" id="B49" onclick = "clickCheck(2,4,9)"></div>
+        </div>
+        <div class="columnE">
+            <div class = "letterLabels">E</div>
+            <div class="cell empty" id="B51" onclick = "clickCheck(2,5,1)"></div>
+            <div class="cell empty" id="B52" onclick = "clickCheck(2,5,2)"></div>
+            <div class="cell empty" id="B53" onclick = "clickCheck(2,5,3)"></div>
+            <div class="cell empty" id="B54" onclick = "clickCheck(2,5,4)"></div>
+            <div class="cell empty" id="B55" onclick = "clickCheck(2,5,5)"></div>
+            <div class="cell empty" id="B56" onclick = "clickCheck(2,5,6)"></div>
+            <div class="cell empty" id="B57" onclick = "clickCheck(2,5,7)"></div>
+            <div class="cell empty" id="B58" onclick = "clickCheck(2,5,8)"></div>
+            <div class="cell empty" id="B59" onclick = "clickCheck(2,5,9)"></div>
+        </div>
+        <div class="columnF">
+            <div class = "letterLabels">F</div>
+            <div class="cell empty" id="B61" onclick = "clickCheck(2,6,1)"></div>
+            <div class="cell empty" id="B62" onclick = "clickCheck(2,6,2)"></div>
+            <div class="cell empty" id="B63" onclick = "clickCheck(2,6,3)"></div>
+            <div class="cell empty" id="B64" onclick = "clickCheck(2,6,4)"></div>
+            <div class="cell empty" id="B65" onclick = "clickCheck(2,6,5)"></div>
+            <div class="cell empty" id="B66" onclick = "clickCheck(2,6,6)"></div>
+            <div class="cell empty" id="B67" onclick = "clickCheck(2,6,7)"></div>
+            <div class="cell empty" id="B68" onclick = "clickCheck(2,6,8)"></div>
+            <div class="cell empty" id="B69" onclick = "clickCheck(2,6,9)"></div>
+        </div>
+        <div class="columnG">
+            <div class = "letterLabels">G</div>
+            <div class="cell empty" id="B71" onclick = "clickCheck(2,7,1)"></div>
+            <div class="cell empty" id="B72" onclick = "clickCheck(2,7,2)"></div>
+            <div class="cell empty" id="B73" onclick = "clickCheck(2,7,3)"></div>
+            <div class="cell empty" id="B74" onclick = "clickCheck(2,7,4)"></div>
+            <div class="cell empty" id="B75" onclick = "clickCheck(2,7,5)"></div>
+            <div class="cell empty" id="B76" onclick = "clickCheck(2,7,6)"></div>
+            <div class="cell empty" id="B77" onclick = "clickCheck(2,7,7)"></div>
+            <div class="cell empty" id="B78" onclick = "clickCheck(2,7,8)"></div>
+            <div class="cell empty" id="B79" onclick = "clickCheck(2,7,9)"></div>
+        </div>
+        <div class="columnH">
+            <div class = "letterLabels">H</div>
+            <div class="cell empty" id="B81" onclick = "clickCheck(2,8,1)"></div>
+            <div class="cell empty" id="B82" onclick = "clickCheck(2,8,2)"></div>
+            <div class="cell empty" id="B83" onclick = "clickCheck(2,8,3)"></div>
+            <div class="cell empty" id="B84" onclick = "clickCheck(2,8,4)"></div>
+            <div class="cell empty" id="B85" onclick = "clickCheck(2,8,5)"></div>
+            <div class="cell empty" id="B86" onclick = "clickCheck(2,8,6)"></div>
+            <div class="cell empty" id="B87" onclick = "clickCheck(2,8,7)"></div>
+            <div class="cell empty" id="B88" onclick = "clickCheck(2,8,8)"></div>
+            <div class="cell empty" id="B89" onclick = "clickCheck(2,8,9)"></div>
+        </div>
+        <div class="columnI">
+            <div class = "letterLabels">I</div>
+            <div class="cell empty" id="B91" onclick = "clickCheck(2,9,1)"></div>
+            <div class="cell empty" id="B92" onclick = "clickCheck(2,9,2)"></div>
+            <div class="cell empty" id="B93" onclick = "clickCheck(2,9,3)"></div>
+            <div class="cell empty" id="B94" onclick = "clickCheck(2,9,4)"></div>
+            <div class="cell empty" id="B95" onclick = "clickCheck(2,9,5)"></div>
+            <div class="cell empty" id="B96" onclick = "clickCheck(2,9,6)"></div>
+            <div class="cell empty" id="B97" onclick = "clickCheck(2,9,7)"></div>
+            <div class="cell empty" id="B98" onclick = "clickCheck(2,9,8)"></div>
+            <div class="cell empty" id="B99" onclick = "clickCheck(2,9,9)"></div>
+        </div>
     </div>
-      </div>
+
+
       <br>
     
 </html>
