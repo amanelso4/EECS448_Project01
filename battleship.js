@@ -4,126 +4,58 @@ var board1 = [];
 var board2 = [];
 var numShips = 0;
 
-<<<<<<< Updated upstream
-=======
 var waitForSwitch=false;
 var horizontal = true;
 var placing = true;
 var placingNum = 1;
 
->>>>>>> Stashed changes
 /* * = empty
     M = Miss
     H = Hit
     @ = Ship
 */
 
-function click(row, col)
-{
-    checkForShip(row,col);
-    checkForWinner(row,ship);
-}
 
-<<<<<<< Updated upstream
-function switchPlayer() {
-    if(player = 1) {
-        player = 2;
-        drawGuessBoard(board1);
-        drawPlayerBoard(board2);
-=======
 function numShipFunction(num){
     document.getElementById('ships').innerHTML = 'Place your ' + placingNum + '-length ship.';
     numShips = num;
     document.getElementById("numShips").remove();
     for(var i = 1; i < 6; i++){
         document.getElementById(i + "Ship").remove();
->>>>>>> Stashed changes
     }
-    else {
-        player = 1;
-        drawGuessBoard(board2);
-        drawPlayerBoard(board1);
+};
+
+function toggleDirection() {
+    horizontal = !horizontal;
+
+    let place_dir = "";
+    if (horizontal) {
+        place_dir = "Horizontally";
+    } else {
+        place_dir = "Vertically";
     }
+    document.getElementById('toggleDir').innerHTML = 'Placing ' + place_dir;
 }
 
-function drawGuessBoard(newBoard) {
-    num = 1;
-    let coord = document.getElementById("guessBoard"+num);
-    for(var i = 0; i<9; i++){
-        for(var j = 0; j<9; j++) {
-            if(newBoard[i][j] != '@')
-            {
-                coord = newBoard[i][j]
-            }
-            else {
-                coord = '*';
-            }
-            num ++;
-            coord = document.getElementById("guessBoard" + num);
-        }
-    }
-}
-
-function drawPlayerBoard(newBoard) {
-    num = 1;
-    let coord = document.getElementById("playerBoard"+num);
-    for(var i = 0; i<9; i++){
-        for(var j = 0; j<9; j++) {
-            coord = newBoard[i][j]
-            num ++;
-            coord = document.getElementById("playerBoard" + num);
-        }
-    }
-}
-
-var row = '';
-var col = '';
-function checkForShip(row, col)
-{
-    console.log("HI i am checking for ship");    if(player == 1) {
-       if(board2[row-1][col-1] == '*') {
-           board2[row-1][col-1] = 'M';
-           document.querySelector("#result").innerText = " MISS "
-       }
-       else {
-           board2[row-1][col-1] = 'H'
-           document.querySelector("#result").innerText = " HIT "
-       }
-    }
-    else {
-        if(board2[row-1][col-1] == '*') {
-            board2[row-1][col-1] = 'M';
-            document.querySelector("#result").innerText = " MISS "
-        }
-        else {
-            board2[row-1][col-1] = 'H'
-            document.querySelector("#result").innerText = " HIT "
-        }
-    }
-}
 
 //length: length of the ship
 //horizontal: true if the boat is being placed horizontally
 function placeShip(row,col,board,length,horizontal){
   if(checkPlacement(row,col,board,length,horizontal)){
     for(i = 0; i < length; i++){
-      if(board == 1){
         if(horizontal){
-          board1[row][col+i]=length;
+            board[row][col+i]="@"+length;
         }else{
-          board1[row+i][col]=length;
+            board[row+i][col]="@"+length;
         }
-      }
-      else{
-        if(horizontal){
-          board2[row][col+i]=length;
-        }else{
-          board2[row+i][col]=length;
-        }
-      }
     }
+    drawPlayerBoard(board);
+    return true;
+  } else {
+      return false;
   }
 }
+
 function checkPlacement(row,col,board,length,horizontal){
   let valid = true;
   if(horizontal){
@@ -131,28 +63,20 @@ function checkPlacement(row,col,board,length,horizontal){
       valid = false;
     }
     else{
-      for(i = 0; i < length; i++){
-        if(board == 1 && board1[row+i][col]!="*"){
-          valid = false;
-          break;
-        }
-        if(board == 2 && board2[row+i][col]!="*"){
+      for(let i = 0; i < length; i++){
+        if(board[row][col+i]!="*"){
           valid = false;
           break;
         }
       }
     }
   }else{
-    if(9 > (row+length)){
+    if(9 < (row+length)){
       valid = false;
     }
     else{
-      for(i = 0; i < length; i++){
-        if(board == 1 && board1[row+i][col]!="*"){
-          valid = false;
-          break;
-        }
-        if(board == 2 && board2[row+i][col]!="*"){
+      for(let i = 0; i < length; i++){
+        if(board[row+i][col]!="*"){
           valid = false;
           break;
         }
@@ -161,7 +85,9 @@ function checkPlacement(row,col,board,length,horizontal){
   }
   return valid;
 }
+
 function createBoards(){
+    console.log("the boards were created");
   for(i = 0; i < 9; i++){
     board1[i]=[];
     board2[i]=[];
@@ -170,12 +96,16 @@ function createBoards(){
       board2[i][j]="*";
     }
   }
-function click(row, col)
+}
+
+
+function setup() {
+    createBoards();
+}
+
+
+function clickCheck(board_num, col, row)
 {
-<<<<<<< Updated upstream
-    checkForShip(row,col);
-    checkForWinner(row,ship);
-=======
     console.log(board_num, row, col);
     if (placing && !waitForSwitch) {
         if (numShips == 0 || board_num !== 2) {
@@ -328,30 +258,26 @@ function colorBlue2(row, col){
     document.getElementById('B'+col+row).classList.remove('red');
     document.getElementById('B'+col+row).classList.remove('miss');
     document.getElementById('B'+col+row).classList.add('empty');
->>>>>>> Stashed changes
 }
 
-var row = '';
-var col = '';
 function checkForShip(row, col)
 {
     if(player == 1) {
        if(board2[row-1][col-1] == '*') {
            board2[row-1][col-1] = 'M';
-           document.querySelector("#result").innerText = " MISS "
+           document.querySelector("#result").innerText = " MISS ";
+           colorMiss(row, col);
+       }
+       else if(board2[row-1][col-1].startsWith('@')) {
+           board2[row-1][col-1] = 'H';
+           document.querySelector("#result").innerText = " HIT ";
+           colorShip(row,col);
        }
        else {
-           board2[row-1][col-1] = 'H'
-           document.querySelector("#result").innerText = " HIT "
+        document.querySelector("#result").innerText = " You have already guessed here, please try again. ";
        }
-       player = 2;
     }
     else {
-<<<<<<< Updated upstream
-        if(board2[row-1][col-1] == '*') {
-            board2[row-1][col-1] = 'M';
-            document.querySelector("#result").innerText = " MISS "
-=======
         if(board1[row-1][col-1] == '*') {
             board1[row-1][col-1] = 'M';
             document.querySelector("#result").innerText = " MISS ";
@@ -361,13 +287,10 @@ function checkForShip(row, col)
             board1[row-1][col-1] = 'H';
             document.querySelector("#result").innerText = " HIT ";
             colorShip(row,col);
->>>>>>> Stashed changes
         }
         else {
-            board2[row-1][col-1] = 'H'
-            document.querySelector("#result").innerText = " HIT "
+            document.querySelector("#result").innerText = " You have already guessed here, please try again. ";
         }
-        player = 1;
     }
 }
 
@@ -375,12 +298,24 @@ function checkForWinner()
 {
   var won = false;
   var numH = 0;
-    for(int i=0; i<9; i++)
+    for(var i=0; i<9; i++)
     {
-      for(int j=0; j<9; j++)
+      for(var j=0; j<9; j++)
       {
-        if(board1[i][j]=='H') //will need to be updated to work for either board
-        numH++;
+        if(player == 1)
+        {
+          if(board1[i][j]=='H')
+          {
+            numH++;
+          }
+        }
+        if(player == 2)
+        {
+          if(board2[i][j]=='H')
+          {
+            numH++;
+          }
+        }
       }
     }
     if(numShips==1 && numH==1)
@@ -403,10 +338,6 @@ function checkForWinner()
     {
         won = true;
     }
-<<<<<<< Updated upstream
-  return won;
-}
-=======
     if(won)
     {
       document.getElementById('ships').innerText = " Congrats! Player" + player + " won! Refresh to play again. "
@@ -422,4 +353,3 @@ document.addEventListener("DOMContentLoaded", () => {
     // document.addEventListener("resize", draw_screen);
     // window.onresize = draw_screen;
 });
->>>>>>> Stashed changes
