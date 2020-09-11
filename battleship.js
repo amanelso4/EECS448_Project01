@@ -10,6 +10,10 @@ var numShips = 0;
     @ = Ship
 */
 
+document.addEventListener("DOMContentLoaded", () => {
+    createBoards();
+});
+
 //length: length of the ship
 //horizontal: true if the boat is being placed horizontally
 function placeShip(row,col,board,length,horizontal){
@@ -32,6 +36,7 @@ function placeShip(row,col,board,length,horizontal){
     }
   }
 }
+
 function checkPlacement(row,col,board,length,horizontal){
   let valid = true;
   if(horizontal){
@@ -80,78 +85,125 @@ function createBoards(){
       board2[i][j]="*";
     }
   }
-}
+
+  board1[0][0] = '@';
+  board2[0][1] = '@';}
 
 function clickCheck(row, col)
 {
     checkForShip(row,col);
-   // checkForWinner(row,ship);
+    checkForWinner();
 }
 
 function switchPlayer() {
-    if(player = 1) {
+    if(player == 1) {
         player = 2;
         drawGuessBoard(board1);
         drawPlayerBoard(board2);
+        document.querySelector("#playersTurn").innerText = " It is now Player 2's turn! ";
     }
     else {
         player = 1;
         drawGuessBoard(board2);
         drawPlayerBoard(board1);
+        document.querySelector("#playersTurn").innerText = " It is now Player 1's turn! ";
     }
 }
 
 function drawGuessBoard(newBoard) {
-    console.log("drawGuessBoard got called");
     for(var i = 0; i<9; i++){
         for(var j = 0; j<9; j++) {
-            if(newBoard[i][j] != '@')
+            if(newBoard[i][j] == 'H')
             {
-                document.querySelector("cell"+(i+1)+(j+1)).innerText = newBoard [i][j];
+                colorShip((i+1),(j+1));
             }
-            else {
-                document.querySelector("cell"+(i+1)+(j+1)).innerText = '*';            }
+            else if(newBoard[i][j] == 'M') {
+                colorMiss((i+1),(j+1));          
+             }
+             else {
+                 colorBlue((i+1), (j+1));
+             }
         }
     }
 }
 
 function drawPlayerBoard(newBoard) {
-    num = 1;
-    let coord = document.getElementById("playerBoard"+1+1);
     for(var i = 0; i<9; i++){
         for(var j = 0; j<9; j++) {
-            coord = newBoard[i][j]
-            coord = document.getElementById("guessBoard" + (i+1) + (j+1));
+            if(newBoard[i][j] == '@' || newBoard[i][j] == 'H') {
+                colorShip2((i+1), (j+1));
+            }
+            else {
+                colorMiss2((i+1),(j+1));
+            }
+            
         }
     }
 }
 
+function colorShip(col, row){
+    document.getElementById('A'+col+row).classList.remove('empty');
+    document.getElementById('A'+col+row).classList.remove('miss');
+    document.getElementById('A'+col+row).classList.add('red');
+}
 
-var row = '';
-var col = '';
+function colorMiss(col, row){
+    document.getElementById('A'+col+row).classList.remove('empty');
+    document.getElementById('A'+col+row).classList.remove('red');
+    document.getElementById('A'+col+row).classList.add('miss');
+}
+
+
+function colorShip2(col, row){
+    document.getElementById('B'+col+row).classList.remove('empty');
+    document.getElementById('B'+col+row).classList.remove('miss');
+    document.getElementById('B'+col+row).classList.add('red');
+}
+
+function colorMiss2(col, row){
+    document.getElementById('B'+col+row).classList.remove('empty');
+    document.getElementById('B'+col+row).classList.remove('red');
+    document.getElementById('B'+col+row).classList.add('miss');
+}
+
+function colorBlue(col, row){
+    document.getElementById('A'+col+row).classList.remove('red');
+    document.getElementById('A'+col+row).classList.remove('miss');
+    document.getElementById('A'+col+row).classList.add('empty');
+}
+
 function checkForShip(row, col)
 {
     if(player == 1) {
        if(board2[row-1][col-1] == '*') {
            board2[row-1][col-1] = 'M';
-           document.getElementById('cell'+col+row).innerHTML = " MISS "
+           document.querySelector("#result").innerText = " MISS ";
+           colorMiss(row, col);
+       }
+       else if(board2 == '@') {
+           board2[row-1][col-1] = 'H';
+           document.querySelector("#result").innerText = " HIT ";
+           colorShip(row,col);
        }
        else {
-           board2[row-1][col-1] = 'H'
-           document.getElementById('cell'+col+row).innerHTML = " HIT "
+        document.querySelector("#result").innerText = " You have already guessed here, please try again. ";
        }
     }
     else {
-        if(board2[row-1][col-1] == '*') {
-            board2[row-1][col-1] = 'M';
-            document.getElementById('cell'+col+row).innerHTML = " MISS "
+        if(board1[row-1][col-1] == '*') {
+            board1[row-1][col-1] = 'M';
+            document.querySelector("#result").innerText = " MISS "
+            colorMiss(row,col);
+        }
+        else if(board1[row-1][col-1] == '@') {
+            board1[row-1][col-1] = 'H'
+            document.querySelector("#result").innerText = " HIT "
+            colorShip(row,col);
         }
         else {
-            board2[row-1][col-1] = 'H'
-            document.getElementById('cell'+col+row).innerHTML = " HIT "
+            document.querySelector("#result").innerText = " You have already guessed here, please try again. ";
         }
     }
-drawGuessBoard(board1);
 }
 
 function checkForWinner()
