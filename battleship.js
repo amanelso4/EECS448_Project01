@@ -216,11 +216,14 @@ function colorCell(row, col) {
 function drawPlayerBoard(newBoard) {
     for(var i = 0; i<9; i++){
         for(var j = 0; j<9; j++) {
-            if(newBoard[i][j].startsWith('@') || newBoard[i][j] == 'H') {
+            if(newBoard[i][j] == 'H') {
                 colorShip2((i+1), (j+1));
             }
             else if(newBoard[i][j] == 'M') {
                 colorMiss2((i+1),(j+1));
+             }
+             else if(newBoard[i][j].startsWith('@')) {
+                 colorShipNoHit((i+1),(j+1));
              }
              else {
                  colorBlue2((i+1), (j+1));
@@ -247,6 +250,13 @@ function colorShip2(row, col){
     document.getElementById('B'+col+row).classList.remove('empty');
     document.getElementById('B'+col+row).classList.remove('miss');
     document.getElementById('B'+col+row).classList.add('red');
+}
+
+function colorShipNoHit(row, col){
+    document.getElementById('B'+col+row).classList.remove('empty');
+    document.getElementById('B'+col+row).classList.remove('miss');
+    document.getElementById('B'+col+row).classList.remove('red');
+    document.getElementById('B'+col+row).classList.add('grey');
 }
 
 function colorMiss2(row, col){
