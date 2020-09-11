@@ -7,3 +7,8 @@
 
 # Generating Documentation
 Run `node_modules/.bin/jsdoc . -c jsdoc.json`
+
+# Works Cited
+This project uses the following packages:
+- [JSDocs: An API documentation generator for JavaScript.](https://github.com/jsdoc/jsdoc)
+- [BetterDocs: Documentation toolbox for your javascript / typescript projects based on JSDoc3](https://github.com/SoftwareBrothers/better-docs)
