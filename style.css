@@ -115,6 +115,10 @@ width: 50px;
     background-color: red;
 }
 
+.grey{
+    background-color: darkgray;
+}
+
 .empty{
     background-color: lightblue;
 }
