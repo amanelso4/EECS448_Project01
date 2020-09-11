@@ -9,6 +9,8 @@ var horizontal = true;
 var placing = true;
 var placingNum = 1;
 
+var classifications = ['empty', 'red', 'grey', 'miss'];
+
 /* * = empty
     M = Miss
     H = Hit
@@ -239,16 +241,16 @@ function hideBoards() {
 function drawGuessBoard(newBoard) {
     for (var i = 0; i < 9; i++) {
         for (var j = 0; j < 9; j++) {
+            clearLabel(i + 1, j + 1);
             if (newBoard[i][j].startsWith('H')) {
-                colorShip((i + 1), (j + 1));
+                colorCell('A', (i + 1), (j + 1), 'red');
             }
             else if (newBoard[i][j] == 'M') {
-                colorMiss((i + 1), (j + 1));
+                colorCell('A', (i + 1), (j + 1), 'miss');
             }
             else {
-                colorBlue((i + 1), (j + 1));
+                colorCell('A', (i + 1), (j + 1), 'empty');
             }
-            clearLabel(i + 1, j + 1);
         }
     }
 }
@@ -263,18 +265,18 @@ function drawPlayerBoard(newBoard) {
     for (var i = 0; i < 9; i++) {
         for (var j = 0; j < 9; j++) {
             if (newBoard[i][j].startsWith('H')) {
-                colorShip2((i + 1), (j + 1));
+                colorCell('B', (i + 1), (j + 1), 'red');
                 labelShip((i + 1), (j + 1), newBoard[i][j][1]);
             }
             else if (newBoard[i][j] == 'M') {
-                colorMiss2((i + 1), (j + 1));
+                colorCell('B', (i + 1), (j + 1), 'miss');
             }
             else if (newBoard[i][j].startsWith('@')) {
-                colorShipNoHit((i + 1), (j + 1));
+                colorCell('B', (i + 1), (j + 1), 'grey');
                 labelShip((i + 1), (j + 1), newBoard[i][j][1]);
             }
             else {
-                colorBlue2((i + 1), (j + 1));
+                colorCell('B', (i + 1), (j + 1), 'empty');
             }
 
         }
@@ -304,90 +306,22 @@ function clearLabel(row, col) {
 }
 
 /**
- * Color a cell as a hit on board one by row and column position.
+ * Color a cell based on the given classification.
  * 
+ * @param {string} boardLetter The letter of the board to update ('A' or 'B')
  * @param {number} row The number of the row to color.
  * @param {number} col The number of the column to color.
+ * @param {string} classification The class of object in the cell ('empty', 'miss', 'red', or 'grey')
  */
-function colorShip(row, col) {
-    document.getElementById('A' + col + row).classList.remove('empty');
-    document.getElementById('A' + col + row).classList.remove('miss');
-    document.getElementById('A' + col + row).classList.add('red');
+function colorCell(boardLetter, row, col, classification) {
+    let cellId = boardLetter + col + row;
+    for (cls of classifications) {
+        document.getElementById(cellId).classList.remove(cls);
+    }
+
+    document.getElementById(cellId).classList.add(classification);
 }
 
-/**
- * Color a cell as a miss on board one by row and column position.
- * 
- * @param {number} row The number of the row to color.
- * @param {number} col The number of the column to color.
- */
-function colorMiss(row, col) {
-    document.getElementById('A' + col + row).classList.remove('empty');
-    document.getElementById('A' + col + row).classList.remove('red');
-    document.getElementById('A' + col + row).classList.add('miss');
-}
-
-/**
- * Color a cell as a hit on board two by row and column position.
- * 
- * @param {number} row The number of the row to color.
- * @param {number} col The number of the column to color.
- */
-function colorShip2(row, col) {
-    document.getElementById('B' + col + row).classList.remove('empty');
-    document.getElementById('B' + col + row).classList.remove('miss');
-    document.getElementById('B' + col + row).classList.remove('grey');
-    document.getElementById('B' + col + row).classList.add('red');
-}
-
-/**
- * Color a cell as ship on board one by row and column position.
- * 
- * @param {number} row The number of the row to color.
- * @param {number} col The number of the column to color.
- */
-function colorShipNoHit(row, col) {
-    document.getElementById('B' + col + row).classList.remove('empty');
-    document.getElementById('B' + col + row).classList.remove('miss');
-    document.getElementById('B' + col + row).classList.remove('red');
-    document.getElementById('B' + col + row).classList.add('grey');
-}
-
-/**
- * Color a cell as miss on board two by row and column position.
- * 
- * @param {number} row The number of the row to color.
- * @param {number} col The number of the column to color.
- */
-function colorMiss2(row, col) {
-    document.getElementById('B' + col + row).classList.remove('empty');
-    document.getElementById('B' + col + row).classList.remove('red');
-    document.getElementById('B' + col + row).classList.add('miss');
-}
-
-/**
- * Color a cell as empty on board one by row and column position.
- * 
- * @param {number} row The number of the row to color.
- * @param {number} col The number of the column to color.
- */
-function colorBlue(row, col) {
-    document.getElementById('A' + col + row).classList.remove('red');
-    document.getElementById('A' + col + row).classList.remove('miss');
-    document.getElementById('A' + col + row).classList.add('empty');
-}
-
-/**
- * Color a cell as empty on board two by row and column position.
- * 
- * @param {number} row The number of the row to color.
- * @param {number} col The number of the column to color.
- */
-function colorBlue2(row, col) {
-    document.getElementById('B' + col + row).classList.remove('red');
-    document.getElementById('B' + col + row).classList.remove('miss');
-    document.getElementById('B' + col + row).classList.add('empty');
-}
 
 /**
  * Check for a ship on the enemy's board at the given location and color the cell accordingly.
@@ -400,12 +334,13 @@ function checkForShip(row, col) {
         if (board2[row - 1][col - 1] == '*') {
             board2[row - 1][col - 1] = 'M';
             document.querySelector("#result").innerText = " MISS ";
-            colorMiss(row, col);
+            colorCell('A', row, col, 'miss');
+
         }
         else if (board2[row - 1][col - 1].startsWith('@')) {
             board2[row - 1][col - 1] = 'H' + board2[row - 1][col - 1][1];
             document.querySelector("#result").innerText = " HIT ";
-            colorShip(row, col);
+            colorCell('A', row, col, 'red');
         }
         else {
             document.querySelector("#result").innerText = " You have already guessed here, please try again. ";
@@ -415,12 +350,12 @@ function checkForShip(row, col) {
         if (board1[row - 1][col - 1] == '*') {
             board1[row - 1][col - 1] = 'M';
             document.querySelector("#result").innerText = " MISS ";
-            colorMiss(row, col);
+            colorCell('A', row, col, 'miss');
         }
         else if (board1[row - 1][col - 1].startsWith('@')) {
             board1[row - 1][col - 1] = 'H' + board1[row - 1][col - 1][1];
             document.querySelector("#result").innerText = " HIT ";
-            colorShip(row, col);
+            colorCell('A', row, col, 'red');
         }
         else {
             document.querySelector("#result").innerText = " You have already guessed here, please try again. ";
