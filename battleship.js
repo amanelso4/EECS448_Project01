@@ -119,6 +119,7 @@ function clickCheck(board_num, col, row)
             }
         }
         if (placingNum > numShips) {
+          document.getElementById('ready').style.display='none';
             if (player == 1) {
                 placingNum = 1;
                 waitForSwitch=true;
@@ -136,6 +137,7 @@ function clickCheck(board_num, col, row)
     } else if (board_num == 1 &&!waitForSwitch) {
         checkForShip(row,col);
         waitForSwitch=true;
+        document.getElementById('ready').style.display='none';
     }
 }
 
@@ -168,6 +170,7 @@ function switchPlayer() {
         document.querySelector("#playersTurn").innerText = " It is now Player 1's turn! ";
     }
     waitForSwitch=false;
+    document.getElementById('ready').style.display='inline-block';
     document.querySelector("#result").innerText = "  ";
   }
   else{
@@ -178,12 +181,13 @@ function switchPlayer() {
 function drawBoards(){
   document.getElementsByClassName('grid-container boardA')[0].style.visibility = 'visible';
   document.getElementsByClassName('grid-container boardB')[0].style.visibility = 'visible';
-  document.getElementById('switch').style.visibility='visible';
+  document.getElementById('switch').style.display='inline-block';
+  document.getElementById('ready').style.display='none';
 }
 function hideBoards(){
   document.getElementsByClassName('grid-container boardA')[0].style.visibility = 'hidden';
   document.getElementsByClassName('grid-container boardB')[0].style.visibility = 'hidden';
-  document.getElementById('switch').style.visibility='hidden';
+  document.getElementById('switch').style.display='none';
 }
 function drawGuessBoard(newBoard) {
     for(var i = 0; i<9; i++){
@@ -344,7 +348,7 @@ function checkForWinner()
     {
       document.getElementById('ships').innerText = " Congrats! Player" + player + " won! Refresh to play again. "
       hideBoards();
-      document.getElementById('ready').style.visibility='hidden';
+      document.getElementById('ready').style.display='none';
     }
   return won;
 }

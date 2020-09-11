@@ -123,6 +123,14 @@ width: 50px;
     background-color:rgb(4, 54, 100);
 }
 
+<<<<<<< HEAD
+#result{
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+    color: blue;
+}
+=======
 #toggleDir {
     background-color: white;
     padding: 10px;
@@ -132,3 +140,4 @@ width: 50px;
 #toggleDir:hover {
     background-color: lightblue;
 }
+>>>>>>> d8d8f61b574172c825f3e9e9dbea31655f398ee9
