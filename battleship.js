@@ -92,26 +92,25 @@ function createBoards(){
 function clickCheck(row, col)
 {
     checkForShip(row,col);
-   // checkForWinner(row,ship);
+    checkForWinner();
 }
 
 function switchPlayer() {
     if(player == 1) {
         player = 2;
-      //  drawGuessBoard(board1);
+        drawGuessBoard(board1);
         drawPlayerBoard(board2);
-        
+        document.querySelector("#playersTurn").innerText = " It is now Player 2's turn! ";
     }
     else {
         player = 1;
-       // drawGuessBoard(board2);
+        drawGuessBoard(board2);
         drawPlayerBoard(board1);
+        document.querySelector("#playersTurn").innerText = " It is now Player 1's turn! ";
     }
-    console.log(player);
 }
 
 function drawGuessBoard(newBoard) {
-    console.log("drawGuessBoard got called");
     for(var i = 0; i<9; i++){
         for(var j = 0; j<9; j++) {
             if(newBoard[i][j] == 'H')
@@ -119,16 +118,19 @@ function drawGuessBoard(newBoard) {
                 colorShip((i+1),(j+1));
             }
             else if(newBoard[i][j] == 'M') {
-                colorMiss(i,j);           }
+                colorMiss((i+1),(j+1));          
+             }
+             else {
+                 colorBlue((i+1), (j+1));
+             }
         }
     }
 }
 
 function drawPlayerBoard(newBoard) {
-    console.log("playerboard created");
     for(var i = 0; i<9; i++){
         for(var j = 0; j<9; j++) {
-            if(newBoard[i][j] == '@' ) {
+            if(newBoard[i][j] == '@' || newBoard[i][j] == 'H') {
                 colorShip2((i+1), (j+1));
             }
             else {
@@ -140,15 +142,14 @@ function drawPlayerBoard(newBoard) {
 }
 
 function colorShip(col, row){
-    console.log("colorship");
     document.getElementById('A'+col+row).classList.remove('empty');
-    document.getElementById('B'+col+row).classList.remove('miss');
+    document.getElementById('A'+col+row).classList.remove('miss');
     document.getElementById('A'+col+row).classList.add('red');
 }
 
 function colorMiss(col, row){
     document.getElementById('A'+col+row).classList.remove('empty');
-    document.getElementById('B'+col+row).classList.remove('red');
+    document.getElementById('A'+col+row).classList.remove('red');
     document.getElementById('A'+col+row).classList.add('miss');
 }
 
@@ -165,9 +166,12 @@ function colorMiss2(col, row){
     document.getElementById('B'+col+row).classList.add('miss');
 }
 
+function colorBlue(col, row){
+    document.getElementById('A'+col+row).classList.remove('red');
+    document.getElementById('A'+col+row).classList.remove('miss');
+    document.getElementById('A'+col+row).classList.add('empty');
+}
 
-var row = '';
-var col = '';
 function checkForShip(row, col)
 {
     if(player == 1) {
@@ -176,25 +180,30 @@ function checkForShip(row, col)
            document.querySelector("#result").innerText = " MISS ";
            colorMiss(row, col);
        }
-       else {
+       else if(board2 == '@') {
            board2[row-1][col-1] = 'H';
            document.querySelector("#result").innerText = " HIT ";
            colorShip(row,col);
        }
+       else {
+        document.querySelector("#result").innerText = " You have already guessed here, please try again. ";
+       }
     }
     else {
-        if(board2[row-1][col-1] == '*') {
-            board2[row-1][col-1] = 'M';
+        if(board1[row-1][col-1] == '*') {
+            board1[row-1][col-1] = 'M';
             document.querySelector("#result").innerText = " MISS "
-            colorMiss(row, col);
+            colorMiss(row,col);
         }
-        else {
-            board2[row-1][col-1] = 'H'
+        else if(board1[row-1][col-1] == '@') {
+            board1[row-1][col-1] = 'H'
             document.querySelector("#result").innerText = " HIT "
             colorShip(row,col);
         }
+        else {
+            document.querySelector("#result").innerText = " You have already guessed here, please try again. ";
+        }
     }
-drawGuessBoard(board1);
 }
 
 function checkForWinner()
