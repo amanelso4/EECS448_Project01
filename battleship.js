@@ -10,6 +10,10 @@ var numShips = 0;
     @ = Ship
 */
 
+document.addEventListener("DOMContentLoaded", () => {
+    createBoards();
+});
+
 //length: length of the ship
 //horizontal: true if the boat is being placed horizontally
 function placeShip(row,col,board,length,horizontal){
@@ -81,7 +85,9 @@ function createBoards(){
       board2[i][j]="*";
     }
   }
-}
+
+  board1[0][0] = '@';
+  board2[0][1] = '@';}
 
 function clickCheck(row, col)
 {
@@ -90,42 +96,73 @@ function clickCheck(row, col)
 }
 
 function switchPlayer() {
-    if(player = 1) {
+    if(player == 1) {
         player = 2;
-        drawGuessBoard(board1);
+      //  drawGuessBoard(board1);
         drawPlayerBoard(board2);
         
     }
     else {
         player = 1;
-        drawGuessBoard(board2);
+       // drawGuessBoard(board2);
         drawPlayerBoard(board1);
     }
+    console.log(player);
 }
 
 function drawGuessBoard(newBoard) {
     console.log("drawGuessBoard got called");
     for(var i = 0; i<9; i++){
         for(var j = 0; j<9; j++) {
-            if(newBoard[i][j] != '@')
+            if(newBoard[i][j] == 'H')
             {
-                document.querySelector("hi11").innerHTML = newBoard [i][j];
+                colorShip((i+1),(j+1));
             }
-            else {
-                document.querySelector("hi11").innerHTML = '*';            }
+            else if(newBoard[i][j] == 'M') {
+                colorMiss(i,j);           }
         }
     }
 }
 
 function drawPlayerBoard(newBoard) {
-    num = 1;
-    let coord = document.getElementById("playerBoard"+1+1);
+    console.log("playerboard created");
     for(var i = 0; i<9; i++){
         for(var j = 0; j<9; j++) {
-            coord = newBoard[i][j]
-            coord = document.getElementById("guessBoard" + (i+1) + (j+1));
+            if(newBoard[i][j] == '@' ) {
+                colorShip2((i+1), (j+1));
+            }
+            else {
+                colorMiss2((i+1),(j+1));
+            }
+            
         }
     }
+}
+
+function colorShip(col, row){
+    console.log("colorship");
+    document.getElementById('A'+col+row).classList.remove('empty');
+    document.getElementById('B'+col+row).classList.remove('miss');
+    document.getElementById('A'+col+row).classList.add('red');
+}
+
+function colorMiss(col, row){
+    document.getElementById('A'+col+row).classList.remove('empty');
+    document.getElementById('B'+col+row).classList.remove('red');
+    document.getElementById('A'+col+row).classList.add('miss');
+}
+
+
+function colorShip2(col, row){
+    document.getElementById('B'+col+row).classList.remove('empty');
+    document.getElementById('B'+col+row).classList.remove('miss');
+    document.getElementById('B'+col+row).classList.add('red');
+}
+
+function colorMiss2(col, row){
+    document.getElementById('B'+col+row).classList.remove('empty');
+    document.getElementById('B'+col+row).classList.remove('red');
+    document.getElementById('B'+col+row).classList.add('miss');
 }
 
 
@@ -136,21 +173,25 @@ function checkForShip(row, col)
     if(player == 1) {
        if(board2[row-1][col-1] == '*') {
            board2[row-1][col-1] = 'M';
-           document.getElementById('cell'+col+row).innerHTML = " MISS "
+           document.querySelector("#result").innerText = " MISS ";
+           colorMiss(row, col);
        }
        else {
-           board2[row-1][col-1] = 'H'
-           document.getElementById('cell'+col+row).innerHTML = " HIT "
+           board2[row-1][col-1] = 'H';
+           document.querySelector("#result").innerText = " HIT ";
+           colorShip(row,col);
        }
     }
     else {
         if(board2[row-1][col-1] == '*') {
             board2[row-1][col-1] = 'M';
-            document.getElementById('cell'+col+row).innerHTML = " MISS "
+            document.querySelector("#result").innerText = " MISS "
+            colorMiss(row, col);
         }
         else {
             board2[row-1][col-1] = 'H'
-            document.getElementById('cell'+col+row).innerHTML = " HIT "
+            document.querySelector("#result").innerText = " HIT "
+            colorShip(row,col);
         }
     }
 drawGuessBoard(board1);
