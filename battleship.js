@@ -15,7 +15,10 @@ var placingNum = 1;
     @ = Ship
 */
 
-
+/**
+ * Sets the number of ships to be placed for this game.
+ * @param {number} num The number of ships to play with this game 
+ */
 function numShipFunction(num){
     document.getElementById('ships').innerHTML = 'Place your ' + placingNum + '-length ship.';
     numShips = num;
@@ -25,6 +28,9 @@ function numShipFunction(num){
     }
 };
 
+/**
+ * Toggle the direction of the ship placement between Horizontal and Vertical.
+ */
 function toggleDirection() {
     horizontal = !horizontal;
 
@@ -39,8 +45,15 @@ function toggleDirection() {
 
 
 
-//length: length of the ship
-//horizontal: true if the boat is being placed horizontally
+/**
+ * Place a ship on the given board based on length.
+ * 
+ * @param {number} row The row of the board in which to place the ship
+ * @param {number} col The column of the board in which to place the ship
+ * @param {Array} board The board for the current player
+ * @param {number} length The length of the ship to be placed
+ * @param {bool} horizontal Flag to place ship horizontally or otherwise vertically
+ */
 function placeShip(row,col,board,length,horizontal){
   if(checkPlacement(row,col,board,length,horizontal)){
     for(i = 0; i < length; i++){
