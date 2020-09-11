@@ -122,3 +122,13 @@ width: 50px;
 .miss{
     background-color:rgb(4, 54, 100);
 }
+
+#toggleDir {
+    background-color: white;
+    padding: 10px;
+    color: black;
+}
+
+#toggleDir:hover {
+    background-color: lightblue;
+}
