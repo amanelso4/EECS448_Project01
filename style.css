@@ -122,3 +122,10 @@ width: 50px;
 .miss{
     background-color:rgb(4, 54, 100);
 }
+
+#result{
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+    color: blue;
+}
