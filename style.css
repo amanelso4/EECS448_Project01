@@ -32,30 +32,10 @@ h2 {
     padding-top: 20px;
 }
 
-.wrap
-{
-    width: 100%;
-    overflow:auto;
-    padding:2px;
-}
-.fleft 
-{
-    margin-right: 20%;
-    align-items: center;
-    float: right; 
-    width: 30%;
-}
-.fright
-{
-    margin-left: 20%;
-    align-items: center;
-    float: left;
-    width: 30%;
-}
-
 .grid-container {
     display: grid;
     grid-template-columns: repeat(10, 50px);
+    padding: 50px;
 }
 
 .numLabels{
@@ -101,6 +81,10 @@ width: 50px;
     margin-bottom: 20px;
     align-content: center;
     margin-left: 825px;
+}
+#boardContainer{
+  display:flex;
+  justify-content: center;
 }
 
 #switch:hover,#ready:hover {
