@@ -40,18 +40,17 @@ h2 {
 }
 .fleft 
 {
-    margin-left: 20%;
+    margin-right: 20%;
     align-items: center;
-    float:left; 
+    float: right; 
     width: 30%;
 }
 .fright
 {
-    margin-right: 20%;
+    margin-left: 20%;
     align-items: center;
-    float: right;
+    float: left;
     width: 30%;
-
 }
 
 .grid-container {
