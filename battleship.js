@@ -95,10 +95,7 @@ function createBoards(){
       board2[i][j]="*";
     }
   }
-
-  board1[0][0] = '@';
-  board2[0][1] = '@';}
-
+}
 
 
 function setup() {
