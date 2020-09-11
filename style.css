@@ -19,25 +19,32 @@ h2 {
     text-align: center;
 }
 
-
-#letterLabels {
-    margin-left: 500px;
-    letter-spacing: 18px;
+.letterLabels{
     font-style: oblique;
     font-weight: bold;
+    text-align: center;
+    padding-bottom: 5px;
 }
 
-#numLabels {
+.numLabels {
     font-style: oblique;
     font-weight: bold;
+    padding-top: 20px;
 }
 
 
 .grid-container {
     display: grid;
     grid-template-columns: repeat(10, 50px);
-    margin-left: 430px;
-  }
+}
+
+.boardA{
+      margin-left: 430px;
+}
+
+.boardB{
+      margin-left: 430px;
+}
 
 .numLabels{
     font-style: oblique;
@@ -61,11 +68,13 @@ width: 50px;
     color: black;
     background-color: white;
     font-size: 15px;
+    font-weight: bold;
     text-align: center;
     padding: 15px 30px;
-    margin-top: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     align-content: center;
-    margin-left: 635px;
+    margin-left: 630px;
 }
 
 #placedShips:hover {
