@@ -48,127 +48,259 @@
     
     <br>
 
-    <div>
-        <p id = "letterLabels">A B C D E F G H I</p>
-    </div>
-
     <span id= "result"></span>
 
-    <div class="grid-container">
-        <div class ="playerBoard">
-            <div class = "numLabels">
-                <div>1</div>
-                <div>2</div>
-                <div>3</div>
-                <div>4</div>
-                <div>5</div>
-                <div>6</div>
-                <div>7</div>
-                <div>8</div>
-                <div>9</div>
-            </div>
-            <div class="columnA">
-                <div class="cell empty" id="cell11" onclick = "clickCheck(1,1)"></div>
-                <div class="cell empty" id="cell12" onclick = "colorShip(1,2)"></div>
-                <div class="cell empty" id="cell13" onclick = "colorShip(1,3)"></div>
-                <div class="cell empty" id="cell14" onclick = "colorShip(1,4)"></div>
-                <div class="cell empty" id="cell15" onclick = "colorShip(1,5)"></div>
-                <div class="cell empty" id="cell16" onclick = "colorShip(1,6)"></div>
-                <div class="cell empty" id="cell17" onclick = "colorShip(1,7)"></div>
-                <div class="cell empty" id="cell18" onclick = "colorShip(1,8)"></div>
-                <div class="cell empty" id="cell19" onclick = "colorShip(1,9)"></div>
-            </div>
-            <div class="columnB">
-                <div class="cell empty" id="cell21" onclick = "colorShip(2,1)"></div>
-                <div class="cell empty" id="cell22" onclick = "colorShip(2,2)"></div>
-                <div class="cell empty" id="cell23" onclick = "colorShip(2,3)"></div>
-                <div class="cell empty" id="cell24" onclick = "colorShip(2,4)"></div>
-                <div class="cell empty" id="cell25" onclick = "colorShip(2,5)"></div>
-                <div class="cell empty" id="cell26" onclick = "colorShip(2,6)"></div>
-                <div class="cell empty" id="cell27" onclick = "colorShip(2,7)"></div>
-                <div class="cell empty" id="cell28" onclick = "colorShip(2,8)"></div>
-                <div class="cell empty" id="cell29" onclick = "colorShip(2,9)"></div>
-            </div>
-            <div class="columnC">
-                <div class="cell empty" id="cell31" onclick = "colorShip(3,1)"></div>
-                <div class="cell empty" id="cell32" onclick = "colorShip(3,2)"></div>
-                <div class="cell empty" id="cell33" onclick = "colorShip(3,3)"></div>
-                <div class="cell empty" id="cell34" onclick = "colorShip(3,4)"></div>
-                <div class="cell empty" id="cell35" onclick = "colorShip(3,5)"></div>
-                <div class="cell empty" id="cell36" onclick = "colorShip(3,6)"></div>
-                <div class="cell empty" id="cell37" onclick = "colorShip(3,7)"></div>
-                <div class="cell empty" id="cell38" onclick = "colorShip(3,8)"></div>
-                <div class="cell empty" id="cell39" onclick = "colorShip(3,9)"></div>
-            </div>
-            <div class="columnD">
-                <div class="cell empty" id="cell41" onclick = "colorShip(4,1)"></div>
-                <div class="cell empty" id="cell42" onclick = "colorShip(4,2)"></div>
-                <div class="cell empty" id="cell43" onclick = "colorShip(4,3)"></div>
-                <div class="cell empty" id="cell44" onclick = "colorShip(4,4)"></div>
-                <div class="cell empty" id="cell45" onclick = "colorShip(4,5)"></div>
-                <div class="cell empty" id="cell46" onclick = "colorShip(4,6)"></div>
-                <div class="cell empty" id="cell47" onclick = "colorShip(4,7)"></div>
-                <div class="cell empty" id="cell48" onclick = "colorShip(4,8)"></div>
-                <div class="cell empty" id="cell49" onclick = "colorShip(4,9)"></div>
-            </div>
-            <div class="columnE">
-                <div class="cell empty" id="cell51" onclick = "colorShip(5,1)"></div>
-                <div class="cell empty" id="cell52" onclick = "colorShip(5,2)"></div>
-                <div class="cell empty" id="cell53" onclick = "colorShip(5,3)"></div>
-                <div class="cell empty" id="cell54" onclick = "colorShip(5,4)"></div>
-                <div class="cell empty" id="cell55" onclick = "colorShip(5,5)"></div>
-                <div class="cell empty" id="cell56" onclick = "colorShip(5,6)"></div>
-                <div class="cell empty" id="cell57" onclick = "colorShip(5,7)"></div>
-                <div class="cell empty" id="cell58" onclick = "colorShip(5,8)"></div>
-                <div class="cell empty" id="cell59" onclick = "colorShip(5,9)"></div>
-            </div>
-            <div class="columnF">
-                <div class="cell empty" id="cell61" onclick = "colorShip(6,1)"></div>
-                <div class="cell empty" id="cell62" onclick = "colorShip(6,2)"></div>
-                <div class="cell empty" id="cell63" onclick = "colorShip(6,3)"></div>
-                <div class="cell empty" id="cell64" onclick = "colorShip(6,4)"></div>
-                <div class="cell empty" id="cell65" onclick = "colorShip(6,5)"></div>
-                <div class="cell empty" id="cell66" onclick = "colorShip(6,6)"></div>
-                <div class="cell empty" id="cell67" onclick = "colorShip(6,7)"></div>
-                <div class="cell empty" id="cell68" onclick = "colorShip(6,8)"></div>
-                <div class="cell empty" id="cell69" onclick = "colorShip(6,9)"></div>
-            </div>
-            <div class="columnG">
-                <div class="cell empty" id="cell71" onclick = "colorShip(7,1)"></div>
-                <div class="cell empty" id="cell72" onclick = "colorShip(7,2)"></div>
-                <div class="cell empty" id="cell73" onclick = "colorShip(7,3)"></div>
-                <div class="cell empty" id="cell74" onclick = "colorShip(7,4)"></div>
-                <div class="cell empty" id="cell75" onclick = "colorShip(7,5)"></div>
-                <div class="cell empty" id="cell76" onclick = "colorShip(7,6)"></div>
-                <div class="cell empty" id="cell77" onclick = "colorShip(7,7)"></div>
-                <div class="cell empty" id="cell78" onclick = "colorShip(7,8)"></div>
-                <div class="cell empty" id="cell79" onclick = "colorShip(7,9)"></div>
-            </div>
-            <div class="columnH">
-                <div class="cell empty" id="cell81" onclick = "colorShip(8,1)"></div>
-                <div class="cell empty" id="cell82" onclick = "colorShip(8,2)"></div>
-                <div class="cell empty" id="cell83" onclick = "colorShip(8,3)"></div>
-                <div class="cell empty" id="cell84" onclick = "colorShip(8,4)"></div>
-                <div class="cell empty" id="cell85" onclick = "colorShip(8,5)"></div>
-                <div class="cell empty" id="cell86" onclick = "colorShip(8,6)"></div>
-                <div class="cell empty" id="cell87" onclick = "colorShip(8,7)"></div>
-                <div class="cell empty" id="cell88" onclick = "colorShip(8,8)"></div>
-                <div class="cell empty" id="cell89" onclick = "colorShip(8,9)"></div>
-            </div>
-            <div class="columnI">
-                <div class="cell empty" id="cell91" onclick = "colorShip(9,1)"></div>
-                <div class="cell empty" id="cell92" onclick = "colorShip(9,2)"></div>
-                <div class="cell empty" id="cell93" onclick = "colorShip(9,3)"></div>
-                <div class="cell empty" id="cell94" onclick = "colorShip(9,4)"></div>
-                <div class="cell empty" id="cell95" onclick = "colorShip(9,5)"></div>
-                <div class="cell empty" id="cell96" onclick = "colorShip(9,6)"></div>
-                <div class="cell empty" id="cell97" onclick = "colorShip(9,7)"></div>
-                <div class="cell empty" id="cell98" onclick = "colorShip(9,8)"></div>
-                <div class="cell empty" id="cell99" onclick = "colorShip(9,9)"></div>
-            </div>
+    <!-- BOARD A -->
+    <div class="grid-container boardA">
+        <div class = "numLabels">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+            <div>7</div>
+            <div>8</div>
+            <div>9</div>
+        </div>
+        <div class="columnA">
+            <div class = "letterLabels">A</div>
+            <div class="cell empty" id="A11" onclick = "clickCheck(1,1)"></div>
+            <div class="cell empty" id="A12" onclick = "colorShip(1,2)"></div>
+            <div class="cell empty" id="A13" onclick = "colorShip(1,3)"></div>
+            <div class="cell empty" id="A14" onclick = "colorShip(1,4)"></div>
+            <div class="cell empty" id="A15" onclick = "colorShip(1,5)"></div>
+            <div class="cell empty" id="A16" onclick = "colorShip(1,6)"></div>
+            <div class="cell empty" id="A17" onclick = "colorShip(1,7)"></div>
+            <div class="cell empty" id="A18" onclick = "colorShip(1,8)"></div>
+            <div class="cell empty" id="A19" onclick = "colorShip(1,9)"></div>
+        </div>
+        <div class="columnB">
+            <div class = "letterLabels">B</div>
+            <div class="cell empty" id="A21" onclick = "colorShip(2,1)"></div>
+            <div class="cell empty" id="A22" onclick = "colorShip(2,2)"></div>
+            <div class="cell empty" id="A23" onclick = "colorShip(2,3)"></div>
+            <div class="cell empty" id="A24" onclick = "colorShip(2,4)"></div>
+            <div class="cell empty" id="A25" onclick = "colorShip(2,5)"></div>
+            <div class="cell empty" id="A26" onclick = "colorShip(2,6)"></div>
+            <div class="cell empty" id="A27" onclick = "colorShip(2,7)"></div>
+            <div class="cell empty" id="A28" onclick = "colorShip(2,8)"></div>
+            <div class="cell empty" id="A29" onclick = "colorShip(2,9)"></div>
+        </div>
+        <div class="columnC">
+            <div class = "letterLabels">C</div>
+            <div class="cell empty" id="A31" onclick = "colorShip(3,1)"></div>
+            <div class="cell empty" id="A32" onclick = "colorShip(3,2)"></div>
+            <div class="cell empty" id="A33" onclick = "colorShip(3,3)"></div>
+            <div class="cell empty" id="A34" onclick = "colorShip(3,4)"></div>
+            <div class="cell empty" id="A35" onclick = "colorShip(3,5)"></div>
+            <div class="cell empty" id="A36" onclick = "colorShip(3,6)"></div>
+            <div class="cell empty" id="A37" onclick = "colorShip(3,7)"></div>
+            <div class="cell empty" id="A38" onclick = "colorShip(3,8)"></div>
+            <div class="cell empty" id="A39" onclick = "colorShip(3,9)"></div>
+        </div>
+        <div class="columnD">
+            <div class = "letterLabels">D</div>
+            <div class="cell empty" id="A41" onclick = "colorShip(4,1)"></div>
+            <div class="cell empty" id="A42" onclick = "colorShip(4,2)"></div>
+            <div class="cell empty" id="A43" onclick = "colorShip(4,3)"></div>
+            <div class="cell empty" id="A44" onclick = "colorShip(4,4)"></div>
+            <div class="cell empty" id="A45" onclick = "colorShip(4,5)"></div>
+            <div class="cell empty" id="A46" onclick = "colorShip(4,6)"></div>
+            <div class="cell empty" id="A47" onclick = "colorShip(4,7)"></div>
+            <div class="cell empty" id="A48" onclick = "colorShip(4,8)"></div>
+            <div class="cell empty" id="A49" onclick = "colorShip(4,9)"></div>
+        </div>
+        <div class="columnE">
+            <div class = "letterLabels">E</div>
+            <div class="cell empty" id="A51" onclick = "colorShip(5,1)"></div>
+            <div class="cell empty" id="A52" onclick = "colorShip(5,2)"></div>
+            <div class="cell empty" id="A53" onclick = "colorShip(5,3)"></div>
+            <div class="cell empty" id="A54" onclick = "colorShip(5,4)"></div>
+            <div class="cell empty" id="A55" onclick = "colorShip(5,5)"></div>
+            <div class="cell empty" id="A56" onclick = "colorShip(5,6)"></div>
+            <div class="cell empty" id="A57" onclick = "colorShip(5,7)"></div>
+            <div class="cell empty" id="A58" onclick = "colorShip(5,8)"></div>
+            <div class="cell empty" id="A59" onclick = "colorShip(5,9)"></div>
+        </div>
+        <div class="columnF">
+            <div class = "letterLabels">F</div>
+            <div class="cell empty" id="A61" onclick = "colorShip(6,1)"></div>
+            <div class="cell empty" id="A62" onclick = "colorShip(6,2)"></div>
+            <div class="cell empty" id="A63" onclick = "colorShip(6,3)"></div>
+            <div class="cell empty" id="A64" onclick = "colorShip(6,4)"></div>
+            <div class="cell empty" id="A65" onclick = "colorShip(6,5)"></div>
+            <div class="cell empty" id="A66" onclick = "colorShip(6,6)"></div>
+            <div class="cell empty" id="A67" onclick = "colorShip(6,7)"></div>
+            <div class="cell empty" id="A68" onclick = "colorShip(6,8)"></div>
+            <div class="cell empty" id="A69" onclick = "colorShip(6,9)"></div>
+        </div>
+        <div class="columnG">
+            <div class = "letterLabels">G</div>
+            <div class="cell empty" id="A71" onclick = "colorShip(7,1)"></div>
+            <div class="cell empty" id="A72" onclick = "colorShip(7,2)"></div>
+            <div class="cell empty" id="A73" onclick = "colorShip(7,3)"></div>
+            <div class="cell empty" id="A74" onclick = "colorShip(7,4)"></div>
+            <div class="cell empty" id="A75" onclick = "colorShip(7,5)"></div>
+            <div class="cell empty" id="A76" onclick = "colorShip(7,6)"></div>
+            <div class="cell empty" id="A77" onclick = "colorShip(7,7)"></div>
+            <div class="cell empty" id="A78" onclick = "colorShip(7,8)"></div>
+            <div class="cell empty" id="A79" onclick = "colorShip(7,9)"></div>
+        </div>
+        <div class="columnH">
+            <div class = "letterLabels">H</div>
+            <div class="cell empty" id="A81" onclick = "colorShip(8,1)"></div>
+            <div class="cell empty" id="A82" onclick = "colorShip(8,2)"></div>
+            <div class="cell empty" id="A83" onclick = "colorShip(8,3)"></div>
+            <div class="cell empty" id="A84" onclick = "colorShip(8,4)"></div>
+            <div class="cell empty" id="A85" onclick = "colorShip(8,5)"></div>
+            <div class="cell empty" id="A86" onclick = "colorShip(8,6)"></div>
+            <div class="cell empty" id="A87" onclick = "colorShip(8,7)"></div>
+            <div class="cell empty" id="A88" onclick = "colorShip(8,8)"></div>
+            <div class="cell empty" id="A89" onclick = "colorShip(8,9)"></div>
+        </div>
+        <div class="columnI">
+            <div class = "letterLabels">I</div>
+            <div class="cell empty" id="A91" onclick = "colorShip(9,1)"></div>
+            <div class="cell empty" id="A92" onclick = "colorShip(9,2)"></div>
+            <div class="cell empty" id="A93" onclick = "colorShip(9,3)"></div>
+            <div class="cell empty" id="A94" onclick = "colorShip(9,4)"></div>
+            <div class="cell empty" id="A95" onclick = "colorShip(9,5)"></div>
+            <div class="cell empty" id="A96" onclick = "colorShip(9,6)"></div>
+            <div class="cell empty" id="A97" onclick = "colorShip(9,7)"></div>
+            <div class="cell empty" id="A98" onclick = "colorShip(9,8)"></div>
+            <div class="cell empty" id="A99" onclick = "colorShip(9,9)"></div>
         </div>
     </div>
+
+    <button id = "placedShips" >Place Ships</button> 
+
+    <!-- BOARD B -->
+
+    <div class="grid-container boardB">
+            <div class = "numLabels">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+            <div>7</div>
+            <div>8</div>
+            <div>9</div>
+        </div>
+        <div class="columnA">
+            <div class = "letterLabels">A</div>
+            <div class="cell empty" id="B11" onclick = "clickCheck(1,1)"></div>
+            <div class="cell empty" id="B12" onclick = "colorShip(1,2)"></div>
+            <div class="cell empty" id="B13" onclick = "colorShip(1,3)"></div>
+            <div class="cell empty" id="B14" onclick = "colorShip(1,4)"></div>
+            <div class="cell empty" id="B15" onclick = "colorShip(1,5)"></div>
+            <div class="cell empty" id="B16" onclick = "colorShip(1,6)"></div>
+            <div class="cell empty" id="B17" onclick = "colorShip(1,7)"></div>
+            <div class="cell empty" id="B18" onclick = "colorShip(1,8)"></div>
+            <div class="cell empty" id="B19" onclick = "colorShip(1,9)"></div>
+        </div>
+        <div class="columnB">
+            <div class = "letterLabels">B</div>
+            <div class="cell empty" id="B21" onclick = "colorShip(2,1)"></div>
+            <div class="cell empty" id="B22" onclick = "colorShip(2,2)"></div>
+            <div class="cell empty" id="B23" onclick = "colorShip(2,3)"></div>
+            <div class="cell empty" id="B24" onclick = "colorShip(2,4)"></div>
+            <div class="cell empty" id="B25" onclick = "colorShip(2,5)"></div>
+            <div class="cell empty" id="B26" onclick = "colorShip(2,6)"></div>
+            <div class="cell empty" id="B27" onclick = "colorShip(2,7)"></div>
+            <div class="cell empty" id="B28" onclick = "colorShip(2,8)"></div>
+            <div class="cell empty" id="B29" onclick = "colorShip(2,9)"></div>
+        </div>
+        <div class="columnC">
+            <div class = "letterLabels">C</div>
+            <div class="cell empty" id="B31" onclick = "colorShip(3,1)"></div>
+            <div class="cell empty" id="B32" onclick = "colorShip(3,2)"></div>
+            <div class="cell empty" id="B33" onclick = "colorShip(3,3)"></div>
+            <div class="cell empty" id="B34" onclick = "colorShip(3,4)"></div>
+            <div class="cell empty" id="B35" onclick = "colorShip(3,5)"></div>
+            <div class="cell empty" id="B36" onclick = "colorShip(3,6)"></div>
+            <div class="cell empty" id="B37" onclick = "colorShip(3,7)"></div>
+            <div class="cell empty" id="B38" onclick = "colorShip(3,8)"></div>
+            <div class="cell empty" id="B39" onclick = "colorShip(3,9)"></div>
+        </div>
+        <div class="columnD">
+            <div class = "letterLabels">D</div>
+            <div class="cell empty" id="B41" onclick = "colorShip(4,1)"></div>
+            <div class="cell empty" id="B42" onclick = "colorShip(4,2)"></div>
+            <div class="cell empty" id="B43" onclick = "colorShip(4,3)"></div>
+            <div class="cell empty" id="B44" onclick = "colorShip(4,4)"></div>
+            <div class="cell empty" id="B45" onclick = "colorShip(4,5)"></div>
+            <div class="cell empty" id="B46" onclick = "colorShip(4,6)"></div>
+            <div class="cell empty" id="B47" onclick = "colorShip(4,7)"></div>
+            <div class="cell empty" id="B48" onclick = "colorShip(4,8)"></div>
+            <div class="cell empty" id="B49" onclick = "colorShip(4,9)"></div>
+        </div>
+        <div class="columnE">
+            <div class = "letterLabels">E</div>
+            <div class="cell empty" id="B51" onclick = "colorShip(5,1)"></div>
+            <div class="cell empty" id="B52" onclick = "colorShip(5,2)"></div>
+            <div class="cell empty" id="B53" onclick = "colorShip(5,3)"></div>
+            <div class="cell empty" id="B54" onclick = "colorShip(5,4)"></div>
+            <div class="cell empty" id="B55" onclick = "colorShip(5,5)"></div>
+            <div class="cell empty" id="B56" onclick = "colorShip(5,6)"></div>
+            <div class="cell empty" id="B57" onclick = "colorShip(5,7)"></div>
+            <div class="cell empty" id="B58" onclick = "colorShip(5,8)"></div>
+            <div class="cell empty" id="B59" onclick = "colorShip(5,9)"></div>
+        </div>
+        <div class="columnF">
+            <div class = "letterLabels">F</div>
+            <div class="cell empty" id="B61" onclick = "colorShip(6,1)"></div>
+            <div class="cell empty" id="B62" onclick = "colorShip(6,2)"></div>
+            <div class="cell empty" id="B63" onclick = "colorShip(6,3)"></div>
+            <div class="cell empty" id="B64" onclick = "colorShip(6,4)"></div>
+            <div class="cell empty" id="B65" onclick = "colorShip(6,5)"></div>
+            <div class="cell empty" id="B66" onclick = "colorShip(6,6)"></div>
+            <div class="cell empty" id="B67" onclick = "colorShip(6,7)"></div>
+            <div class="cell empty" id="B68" onclick = "colorShip(6,8)"></div>
+            <div class="cell empty" id="B69" onclick = "colorShip(6,9)"></div>
+        </div>
+        <div class="columnG">
+            <div class = "letterLabels">G</div>
+            <div class="cell empty" id="B71" onclick = "colorShip(7,1)"></div>
+            <div class="cell empty" id="B72" onclick = "colorShip(7,2)"></div>
+            <div class="cell empty" id="B73" onclick = "colorShip(7,3)"></div>
+            <div class="cell empty" id="B74" onclick = "colorShip(7,4)"></div>
+            <div class="cell empty" id="B75" onclick = "colorShip(7,5)"></div>
+            <div class="cell empty" id="B76" onclick = "colorShip(7,6)"></div>
+            <div class="cell empty" id="B77" onclick = "colorShip(7,7)"></div>
+            <div class="cell empty" id="B78" onclick = "colorShip(7,8)"></div>
+            <div class="cell empty" id="B79" onclick = "colorShip(7,9)"></div>
+        </div>
+        <div class="columnH">
+            <div class = "letterLabels">H</div>
+            <div class="cell empty" id="B81" onclick = "colorShip(8,1)"></div>
+            <div class="cell empty" id="B82" onclick = "colorShip(8,2)"></div>
+            <div class="cell empty" id="B83" onclick = "colorShip(8,3)"></div>
+            <div class="cell empty" id="B84" onclick = "colorShip(8,4)"></div>
+            <div class="cell empty" id="B85" onclick = "colorShip(8,5)"></div>
+            <div class="cell empty" id="B86" onclick = "colorShip(8,6)"></div>
+            <div class="cell empty" id="B87" onclick = "colorShip(8,7)"></div>
+            <div class="cell empty" id="B88" onclick = "colorShip(8,8)"></div>
+            <div class="cell empty" id="B89" onclick = "colorShip(8,9)"></div>
+        </div>
+        <div class="columnI">
+            <div class = "letterLabels">I</div>
+            <div class="cell empty" id="B91" onclick = "colorShip(9,1)"></div>
+            <div class="cell empty" id="B92" onclick = "colorShip(9,2)"></div>
+            <div class="cell empty" id="B93" onclick = "colorShip(9,3)"></div>
+            <div class="cell empty" id="B94" onclick = "colorShip(9,4)"></div>
+            <div class="cell empty" id="B95" onclick = "colorShip(9,5)"></div>
+            <div class="cell empty" id="B96" onclick = "colorShip(9,6)"></div>
+            <div class="cell empty" id="B97" onclick = "colorShip(9,7)"></div>
+            <div class="cell empty" id="B98" onclick = "colorShip(9,8)"></div>
+            <div class="cell empty" id="B99" onclick = "colorShip(9,9)"></div>
+        </div>
+    </div>
+
+
       <br>
-      <button id = "placedShips" >Place Ships</button>
+
     
 </html>
