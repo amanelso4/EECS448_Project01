@@ -32,18 +32,31 @@ h2 {
     padding-top: 20px;
 }
 
+.wrap
+{
+    width: 100%;
+    overflow:auto;
+    padding:2px;
+}
+.fleft 
+{
+    margin-left: 20%;
+    align-items: center;
+    float:left; 
+    width: 30%;
+}
+.fright
+{
+    margin-right: 20%;
+    align-items: center;
+    float: right;
+    width: 30%;
+
+}
 
 .grid-container {
     display: grid;
     grid-template-columns: repeat(10, 50px);
-}
-
-.boardA{
-      margin-left: 430px;
-}
-
-.boardB{
-      margin-left: 430px;
 }
 
 .numLabels{
@@ -63,7 +76,7 @@ height: 50px;
 width: 50px;
 }
 
-#placedShips {
+#switch,#ready {
     border: 2px solid red;
     color: black;
     background-color: white;
@@ -77,8 +90,8 @@ width: 50px;
     margin-left: 630px;
 }
 
-#placedShips:hover {
-    background-color: red; 
+#switch:hover,#ready:hover {
+    background-color: red;
     border: none;
     color: white;
     padding: 17px 32px;
