@@ -1,4 +1,4 @@
-var winner = false;
+var gameOver = false;
 var player = 1;
 var board1 = [];
 var board2 = [];
@@ -9,7 +9,7 @@ var horizontal = true;
 var placing = true;
 var placingNum = 1;
 
-var classifications = ['empty', 'red', 'grey', 'miss'];
+var classifications = ['empty', 'red', 'grey', 'miss', 'sunk'];
 
 /* * = empty
     M = Miss
@@ -162,8 +162,7 @@ function clickCheck(board_num, col, row) {
             document.getElementById('ships').innerHTML = 'CHOOSE WHERE TO SHOOT.';
         }
     } else if (board_num == 1 && !waitForSwitch) {
-        checkForShip(row, col);
-        waitForSwitch = true;
+        waitForSwitch = checkForShip(row, col);
         document.getElementById('ready').style.display = 'none';
     }
 }
@@ -241,9 +240,15 @@ function hideBoards() {
 function drawGuessBoard(newBoard) {
     for (var i = 0; i < 9; i++) {
         for (var j = 0; j < 9; j++) {
-            clearLabel(i + 1, j + 1);
+            clearCellLabel(i + 1, j + 1, 'A');
             if (newBoard[i][j].startsWith('H')) {
-                colorCell('A', (i + 1), (j + 1), 'red');
+                let shipNum = newBoard[i][j][1];
+                if (checkSunk(newBoard, shipNum)) {
+                    labelCell(i+1, j+1, shipNum, 'A');
+                    colorCell('A', (i + 1), (j + 1), 'sunk');
+                } else {
+                    colorCell('A', (i + 1), (j + 1), 'red');
+                }
             }
             else if (newBoard[i][j] == 'M') {
                 colorCell('A', (i + 1), (j + 1), 'miss');
@@ -264,16 +269,22 @@ function drawGuessBoard(newBoard) {
 function drawPlayerBoard(newBoard) {
     for (var i = 0; i < 9; i++) {
         for (var j = 0; j < 9; j++) {
+            clearCellLabel(i+1, j+1, 'B');
             if (newBoard[i][j].startsWith('H')) {
-                colorCell('B', (i + 1), (j + 1), 'red');
-                labelShip((i + 1), (j + 1), newBoard[i][j][1]);
+                let shipNum = newBoard[i][j][1];
+                if (checkSunk(newBoard, shipNum)) {
+                    colorCell('B', (i + 1), (j + 1), 'sunk');
+                } else {
+                    colorCell('B', (i + 1), (j + 1), 'red');
+                }
+                labelCell((i + 1), (j + 1), newBoard[i][j][1]);
             }
             else if (newBoard[i][j] == 'M') {
                 colorCell('B', (i + 1), (j + 1), 'miss');
             }
             else if (newBoard[i][j].startsWith('@')) {
                 colorCell('B', (i + 1), (j + 1), 'grey');
-                labelShip((i + 1), (j + 1), newBoard[i][j][1]);
+                labelCell((i + 1), (j + 1), newBoard[i][j][1]);
             }
             else {
                 colorCell('B', (i + 1), (j + 1), 'empty');
@@ -285,14 +296,36 @@ function drawPlayerBoard(newBoard) {
 
 
 /**
- * Draw a ship's number.
+ * Draw a ship's number to a cell.
  * 
  * @param {number} row The row of the ship to label.
  * @param {number} col The column of the ship to label.
  * @param {string} shipNumber The ship's number.
+ * @param {string} boardLetter The letter of the board to update.
  */
-function labelShip(row, col, shipNumber) {
-    document.getElementById('B' + col + row).innerText = shipNumber;
+function labelCell(row, col, shipNumber, boardLetter='B') {
+    document.getElementById(boardLetter + col + row).innerText = shipNumber;
+}
+
+/**
+ * Label every ship of a given number.
+ * 
+ * @param {Array} board The board to search for the shipNumber.
+ * @param {string} shipNumber The ship's number.
+ * @param {string} boardLetter The letter of the board to update.
+ */
+function labelShip(board, shipNumber, boardLetter='B') {
+    for (let i = 0; i < 9; i++) {
+        for (let j = 0; j < 9; j++) {
+            let value = board[i][j];
+            if (value.startsWith('@') || value.startsWith('H')) {
+                let num = board[i][j][1];
+                if (num == shipNumber) {
+                    document.getElementById(boardLetter + col + row).innerText = shipNumber;
+                }
+            }
+        }
+    }
 }
 
 /**
@@ -300,9 +333,10 @@ function labelShip(row, col, shipNumber) {
  * 
  * @param {number} row The row of the label to clear.
  * @param {number} col The column of the label to clear.
+ * @param {string} boardLetter The letter of the board to update.
  */
-function clearLabel(row, col) {
-    document.getElementById('B' + col + row).innerText = "";
+function clearCellLabel(row, col, boardLetter='B') {
+    document.getElementById(boardLetter + col + row).innerText = "";
 }
 
 /**
@@ -311,7 +345,7 @@ function clearLabel(row, col) {
  * @param {string} boardLetter The letter of the board to update ('A' or 'B')
  * @param {number} row The number of the row to color.
  * @param {number} col The number of the column to color.
- * @param {string} classification The class of object in the cell ('empty', 'miss', 'red', or 'grey')
+ * @param {string} classification The class of object in the cell ('empty', 'miss', 'red', 'sunk', or 'grey')
  */
 function colorCell(boardLetter, row, col, classification) {
     let cellId = boardLetter + col + row;
@@ -324,43 +358,60 @@ function colorCell(boardLetter, row, col, classification) {
 
 
 /**
+ * Check if a given ship has been sunk on the given board.
+ * 
+ * @param {Array} board The board to check for sunken ship.
+ * @param {string} shipNum The number which identifies the ship to check for.
+ */
+function checkSunk(board, shipNum) {
+    for (let i = 0; i < 9; i++) {
+        for (let j = 0; j < 9; j++) {
+            let value = board[i][j];
+            if (value.startsWith("@")) {
+                if (value[1] == shipNum) {
+                    return false;
+                }
+            }
+        }
+    }
+    return true;
+}
+
+/**
  * Check for a ship on the enemy's board at the given location and color the cell accordingly.
  * 
  * @param {number} row The row to check.
  * @param {number} col The column to check.
+ * @returns {bool} Spot was not already chosen.
  */
 function checkForShip(row, col) {
-    if (player == 1) {
-        if (board2[row - 1][col - 1] == '*') {
-            board2[row - 1][col - 1] = 'M';
-            document.querySelector("#result").innerText = " MISS ";
-            colorCell('A', row, col, 'miss');
+    let board = board2; 
+    let otherBoard = board1;
+    if (player == 2) {
+        board = board1;
+        otherBoard = board2;
+    }
 
-        }
-        else if (board2[row - 1][col - 1].startsWith('@')) {
-            board2[row - 1][col - 1] = 'H' + board2[row - 1][col - 1][1];
+    if (board[row - 1][col - 1] == '*') {
+        board[row - 1][col - 1] = 'M';
+        document.querySelector("#result").innerText = " MISS ";
+    }
+    else if (board[row - 1][col - 1].startsWith('@')) {
+        let shipNum = board[row - 1][col - 1][1];
+        board[row - 1][col - 1] = 'H' + shipNum;
+        if (checkSunk(board, shipNum)) {
+            document.querySelector("#result").innerText = " SUNK! ";
+        } else {
             document.querySelector("#result").innerText = " HIT ";
-            colorCell('A', row, col, 'red');
-        }
-        else {
-            document.querySelector("#result").innerText = " You have already guessed here, please try again. ";
         }
     }
     else {
-        if (board1[row - 1][col - 1] == '*') {
-            board1[row - 1][col - 1] = 'M';
-            document.querySelector("#result").innerText = " MISS ";
-            colorCell('A', row, col, 'miss');
-        }
-        else if (board1[row - 1][col - 1].startsWith('@')) {
-            board1[row - 1][col - 1] = 'H' + board1[row - 1][col - 1][1];
-            document.querySelector("#result").innerText = " HIT ";
-            colorCell('A', row, col, 'red');
-        }
-        else {
-            document.querySelector("#result").innerText = " You have already guessed here, please try again. ";
-        }
+        document.querySelector("#result").innerText = " You have already guessed here, please try again. ";
+        return false;
     }
+    drawGuessBoard(board);
+    drawPlayerBoard(otherBoard);
+    return true;
 }
 
 /**
@@ -399,7 +450,13 @@ function checkForWinner() {
         won = true;
     }
     if (won) {
-        document.getElementById('ships').innerText = " Congrats! Player" + player + " won! Refresh to play again. "
+        let winner = 1;
+        if (player == 1) {
+            winner = 2;
+        }
+        gameOver = true;
+        document.getElementById('ships').innerText = " Congrats! Player " + winner + " won! Refresh to play again. "
+        document.querySelector("#playersTurn").innerText = "";
         hideBoards();
         document.getElementById('ready').style.display = 'none';
     }

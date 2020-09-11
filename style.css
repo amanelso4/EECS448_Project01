@@ -51,6 +51,10 @@ h2 {
 
 .cell {
 border: 3px solid rgb(100, 100, 100);
+color: white;
+text-align: center;
+vertical-align: middle;
+line-height: 50px;
 height: 50px;
 width: 50px;
 }
@@ -110,6 +114,9 @@ width: 50px;
 
 .miss{
     background-color:rgb(4, 54, 100);
+}
+.sunk{
+    background-color:rgb(24, 27, 33);
 }
 
 #result{
