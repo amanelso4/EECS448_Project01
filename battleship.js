@@ -249,6 +249,7 @@ function colorMiss(row, col){
 function colorShip2(row, col){
     document.getElementById('B'+col+row).classList.remove('empty');
     document.getElementById('B'+col+row).classList.remove('miss');
+    document.getElementById('B'+col+row).classList.remove('grey');
     document.getElementById('B'+col+row).classList.add('red');
 }
 
