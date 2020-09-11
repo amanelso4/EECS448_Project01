@@ -55,6 +55,7 @@ function toggleDirection() {
  * @param {Array} board The board for the current player
  * @param {number} length The length of the ship to be placed
  * @param {bool} horizontal Flag to place ship horizontally or otherwise vertically
+ * @returns {bool} Successfully placed ship.
  */
 function placeShip(row, col, board, length, horizontal) {
     if (checkPlacement(row, col, board, length, horizontal)) {
@@ -80,6 +81,7 @@ function placeShip(row, col, board, length, horizontal) {
  * @param {Array} board The board for the current player
  * @param {number} length The length of the ship to be placed
  * @param {bool} horizontal Flag to place ship horizontally or otherwise vertically
+ * @returns {bool} Placement is valid.
  */
 function checkPlacement(row, col, board, length, horizontal) {
     let valid = true;
@@ -171,6 +173,7 @@ function clickCheck(board_num, col, row) {
  * Get the current player board or by number.
  * 
  * @param {number} num The number of board to return. Returns current board if NaN.
+ * @returns {Array} The board of the current player or passed number.
  */
 function getBoard(num = NaN) {
     if (isNaN(num)) {
@@ -362,6 +365,7 @@ function colorCell(boardLetter, row, col, classification) {
  * 
  * @param {Array} board The board to check for sunken ship.
  * @param {string} shipNum The number which identifies the ship to check for.
+ * @returns {bool} Shipnum has been sunk on this board.
  */
 function checkSunk(board, shipNum) {
     for (let i = 0; i < 9; i++) {
@@ -416,6 +420,7 @@ function checkForShip(row, col) {
 
 /**
  * Check if all ships have been hit.
+ * @returns {bool} Whether or not someone has won.
  */
 function checkForWinner() {
     var won = false;
